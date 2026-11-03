@@ -1,8 +1,16 @@
 const stops = [...document.querySelectorAll('.stop[id]')];
-const titleOf = stop => stop.querySelector('h2').textContent.trim();
+const hero = document.querySelector('.hero');
+const whatsNext = document.querySelector('.whats-next');
 
 // Read headings before KaTeX rewrites them with duplicated text.
-const titles = stops.map(titleOf);
+const titles = stops.map(stop => stop.querySelector('h2').textContent.trim());
+
+// A transition paragraph introduces the stop after it, so move it inside
+// that stop. Otherwise it would be orphaned when only one stop is shown.
+document.querySelectorAll('.journey > .transition').forEach(t => {
+  const next = t.nextElementSibling?.closest('.stop');
+  if (next) next.querySelector('.stop-content').prepend(t);
+});
 
 // Sidebar section list
 const navList = document.getElementById('nav-list');
@@ -14,6 +22,7 @@ stops.forEach((stop, i) => {
   li.appendChild(a);
   navList.appendChild(li);
 });
+const navLinks = [...navList.querySelectorAll('a')];
 
 // Previous / next links at the end of each stop. The first and last stops
 // link to the neighbouring unit page when the body declares one.
@@ -23,7 +32,7 @@ function pagerLink(href, label, title, dir) {
   const a = document.createElement('a');
   a.className = 'pager-link pager-' + dir;
   a.href = href;
-  a.innerHTML = `<span class="pager-label"></span><span class="pager-title"></span>`;
+  a.innerHTML = '<span class="pager-label"></span><span class="pager-title"></span>';
   a.querySelector('.pager-label').textContent = label;
   a.querySelector('.pager-title').textContent = title;
   return a;
@@ -62,41 +71,50 @@ document.querySelectorAll('.math-inline').forEach(el => {
   katex.render(el.dataset.math, el, { displayMode: false, throwOnError: false });
 });
 
-// Progress bar and active stop tracking
+// Paged mode: one stop on screen at a time. The URL hash holds the current
+// stop, so refresh, bookmarks and the browser back button all work.
+document.body.classList.add('paged');
+
 const progress = document.createElement('div');
 progress.className = 'read-progress';
 document.body.appendChild(progress);
 
-const navLinks = [...navList.querySelectorAll('a')];
-let currentIndex = 0;
+let current = 0;
 
-function onScroll() {
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
-
-  currentIndex = 0;
-  stops.forEach((stop, i) => {
-    if (stop.getBoundingClientRect().top <= 140) currentIndex = i;
-  });
-  navLinks.forEach((link, i) => link.classList.toggle('active', i === currentIndex));
+function indexFromHash() {
+  const i = stops.findIndex(s => '#' + s.id === location.hash);
+  return i === -1 ? null : i;
 }
 
-window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
+function show(i) {
+  current = i;
+  stops.forEach((stop, j) => stop.classList.toggle('is-current', j === i));
+  navLinks.forEach((link, j) => link.classList.toggle('active', j === i));
+  if (hero) hero.hidden = i !== 0;
+  if (whatsNext) whatsNext.hidden = i !== stops.length - 1;
+  progress.style.width = ((i + 1) / stops.length) * 100 + '%';
+  document.title = `${titles[i]} · ${document.title.split(' · ').pop()}`;
+  window.scrollTo(0, 0);
+}
 
-// Left / right arrow keys jump between stops
+window.addEventListener('hashchange', () => {
+  const i = indexFromHash();
+  if (i !== null) show(i);
+});
+
+show(indexFromHash() ?? 0);
+
+// Left / right arrow keys move between stops
 document.addEventListener('keydown', e => {
   if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
   if (e.target.closest('input, textarea, select, [contenteditable]')) return;
 
-  let target;
-  if (e.key === 'ArrowRight') target = stops[currentIndex + 1];
-  if (e.key === 'ArrowLeft') target = stops[currentIndex - 1];
-  if (!target) return;
+  const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+  const target = stops[current + step];
+  if (!step || !target) return;
 
   e.preventDefault();
-  target.scrollIntoView({ behavior: 'smooth' });
-  history.replaceState(null, '', '#' + target.id);
+  location.hash = target.id;
 });
 
 // Mobile sidebar toggle

@@ -245,7 +245,7 @@ body {
 
 /* ── Distribution bar chart ── */
 .dist-visual {
-  display: flex; justify-content: center; gap: 32px;
+  display: flex; justify-content: center; align-items: flex-end; gap: 32px;
   padding: 20px 0; margin: 16px 0;
 }
 .dist-visual.six { gap: 14px; }
@@ -413,6 +413,18 @@ ol li { padding: 2px 0; }
   font-size: 11px; color: var(--text-muted);
   font-variant-numeric: tabular-nums;
 }
+
+/* ── Paged mode: one stop at a time ── */
+.paged .stop:not(.is-current) { display: none; }
+.paged .journey::before { display: none; }
+.paged .stop-marker { display: none; }
+.paged .journey { padding-left: 0; }
+.paged .stop { min-height: 70vh; }
+.stop-content > .transition {
+  text-align: left; padding: 0 0 20px; margin-bottom: 24px;
+  border-bottom: 1px dashed var(--border);
+}
+.stop-content > .transition p { max-width: none; margin: 0 0 8px; }
 
 /* ── Reading progress bar ── */
 .read-progress {
