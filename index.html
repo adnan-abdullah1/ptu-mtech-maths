@@ -326,96 +326,23 @@
           <span class="stop-label">The formula</span>
           <h2>Probability function (PMF)</h2>
 
-          <p>The bar charts on the previous stop can be described by a formula: feed in a value of <span class="math-inline" data-math="X"></span>, get back its probability. That formula is the <strong>probability function</strong>. Before the maths, let's sort out the names, because several are used for the same thing.</p>
+          <p>The probability function is the bar chart from the previous stop, written as a formula. You give it a value of <span class="math-inline" data-math="X"></span>, it gives back the probability of that value.</p>
 
-          <div class="ladder">
-            <a class="ladder-step" href="#probability-distribution">
-              <span class="ladder-tag">The idea · previous stop</span>
-              <strong>Probability distribution</strong>
-              <p>How the total probability of 1 is spread over the values of <span class="math-inline" data-math="X"></span>. You can show it as a table, a chart, or a formula.</p>
-            </a>
-            <div class="ladder-step ladder-indent">
-              <span class="ladder-tag">The formula · this stop</span>
-              <strong>Probability function</strong>
-              <p>The distribution written as a function, <span class="math-inline" data-math="f(x) = P(X = x)"></span>. Same information as the chart, in a form you can calculate with. Its rules are on the <a href="#conditions">next stop</a>.</p>
-            </div>
-            <div class="ladder-split ladder-indent-2">
-              <div class="ladder-step">
-                <span class="ladder-tag">Discrete X</span>
-                <strong>PMF</strong>
-                <p>Probability <em>mass</em> function. Probabilities sit on individual values and add up to 1. This page.</p>
-              </div>
-              <div class="ladder-step ladder-muted">
-                <span class="ladder-tag">Continuous X</span>
-                <strong>PDF</strong>
-                <p>Probability <em>density</em> function. Probability comes from area under a curve. <a href="unit2.html#pdf">Unit 2</a>.</p>
-              </div>
-            </div>
-          </div>
+          <h3>Step 1. Turn the chart into a function</h3>
 
-          <div class="key-insight">
-            <span class="key-tag">Same thing, different names</span>
-            For a discrete random variable, all of these mean the same function: <strong>probability function</strong>, <strong>statistical distribution</strong>, <strong>probability mass function (PMF)</strong>. "Density" is kept for the continuous case, so for discrete write <strong>PMF</strong>.<br><br>
-            The function is written as <span class="math-inline" data-math="p(x)"></span> or <span class="math-inline" data-math="f(x)"></span>. Same function, different letter.
-          </div>
+          <p>The two-coin chart said: 0 heads has probability 1/4, 1 head has 1/2, 2 heads has 1/4. Give that rule a name, <span class="math-inline" data-math="f"></span>:</p>
 
-          <h3>The probability function is a function too</h3>
+          <div class="math-block" data-math="f(0) = \tfrac{1}{4}, \qquad f(1) = \tfrac{1}{2}, \qquad f(2) = \tfrac{1}{4}"></div>
 
-          <p>You already know <span class="math-inline" data-math="X"></span> is a function. The probability function is a <em>second</em> function, built on top of it:</p>
+          <p>Read <span class="math-inline" data-math="f(1) = \tfrac{1}{2}"></span> as "the probability of getting exactly 1 head is 1/2". In symbols, that's the definition of the probability function:</p>
 
-          <div class="math-block" data-math="f : \mathbb{R} \to [0, 1], \qquad f(x) = P(X = x)"></div>
+          <div class="math-block highlight-block" data-math="f(x) = P(X = x)"></div>
 
-          <ul class="why-list">
-            <li><strong>Input:</strong> any real number <span class="math-inline" data-math="x"></span>. You're allowed to ask for <span class="math-inline" data-math="f(7.3)"></span> even though <span class="math-inline" data-math="X"></span> can never be 7.3.</li>
-            <li><strong>Output:</strong> a probability, so a number from 0 to 1.</li>
-            <li><strong>Rule:</strong> the probability that <span class="math-inline" data-math="X"></span> lands on the value <span class="math-inline" data-math="x"></span>.</li>
-          </ul>
+          <p>Nothing more than that. <span class="math-inline" data-math="x"></span> is a value, <span class="math-inline" data-math="f(x)"></span> is its probability.</p>
 
-          <table>
-            <thead><tr><th></th><th>Random variable <span class="math-inline" data-math="X"></span></th><th>Probability function <span class="math-inline" data-math="f"></span></th></tr></thead>
-            <tbody>
-              <tr><td>Input</td><td>an outcome, like HT</td><td>a number, like 1</td></tr>
-              <tr><td>Output</td><td>a number</td><td>a probability</td></tr>
-              <tr><td>Example</td><td><span class="math-inline" data-math="X(HT) = 1"></span></td><td><span class="math-inline" data-math="f(1) = \tfrac{1}{2}"></span></td></tr>
-            </tbody>
-          </table>
+          <h3>Step 2. Write it down completely</h3>
 
-          <p>They chain together. The experiment hands you an outcome, <span class="math-inline" data-math="X"></span> turns it into a number, and <span class="math-inline" data-math="f"></span> tells you how likely that number was:</p>
-
-          <div class="math-block" data-math="HT \;\xrightarrow{\;X\;}\; 1 \;\xrightarrow{\;f\;}\; \tfrac{1}{2}"></div>
-
-          <h3>What P(X = x) really means</h3>
-
-          <p><span class="math-inline" data-math="X"></span> is a function, not an event, so what does <span class="math-inline" data-math="P(X = x)"></span> actually mean? Written out in full, it's the probability of a set of outcomes:</p>
-
-          <div class="math-block" data-math="f(x) = P(X = x) = P\big(\{\, s \in S \;|\; X(s) = x \,\}\big)"></div>
-
-          <p>Collect every outcome whose <span class="math-inline" data-math="X"></span>-value equals <span class="math-inline" data-math="x"></span>. That collection is an event, and <span class="math-inline" data-math="f(x)"></span> is its probability. This is exactly what the bar chart did when it counted outcomes. Two coins, <span class="math-inline" data-math="X"></span> = number of heads:</p>
-
-          <div class="math-block" data-math="\begin{aligned} f(1) &= P(\{HT,\, TH\}) = \tfrac{2}{4} = \tfrac{1}{2} \\[4pt] f(5) &= P(\{\,\}) = 0 \qquad \text{(no outcome has 5 heads)} \end{aligned}"></div>
-
-          <p>That second line explains why <span class="math-inline" data-math="f(x) = 0"></span> outside the range. It isn't a separate rule to memorise. For an impossible value, the set of outcomes is empty, and the empty set has probability 0.</p>
-
-          <p>The same pattern works for every kind of inequality. Each one is the probability of a subset of <span class="math-inline" data-math="S"></span>:</p>
-
-          <table>
-            <thead><tr><th>Shorthand</th><th>What it actually means</th><th>Two-coin example (<span class="math-inline" data-math="X"></span> = heads)</th></tr></thead>
-            <tbody>
-              <tr><td><span class="math-inline" data-math="P(X = a)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) = a\}"></span></td><td><span class="math-inline" data-math="P(X = 1) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
-              <tr><td><span class="math-inline" data-math="P(X \leq c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) \leq c\}"></span></td><td><span class="math-inline" data-math="P(X \leq 1) = P\{HT, TH, TT\} = \tfrac{3}{4}"></span></td></tr>
-              <tr><td><span class="math-inline" data-math="P(X > c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) > c\}"></span></td><td><span class="math-inline" data-math="P(X > 1) = P\{HH\} = \tfrac{1}{4}"></span></td></tr>
-              <tr><td><span class="math-inline" data-math="P(a < X < b)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, a < X(s) < b\}"></span></td><td><span class="math-inline" data-math="P(0 < X < 2) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
-            </tbody>
-          </table>
-
-          <div class="key-insight">
-            <span class="key-tag">Exam trap</span>
-            Before calculating <span class="math-inline" data-math="P(X = x)"></span>, check whether <span class="math-inline" data-math="x"></span> is in the range at all. If it isn't, the answer is 0.
-          </div>
-
-          <h3>Three ways to write the same function</h3>
-
-          <p><strong>As a table:</strong></p>
+          <p>As a table:</p>
           <table class="compact">
             <thead><tr><th><span class="math-inline" data-math="x"></span></th><th><span class="math-inline" data-math="f(x)"></span></th></tr></thead>
             <tbody>
@@ -425,14 +352,75 @@
             </tbody>
           </table>
 
-          <p><strong>As a piecewise formula:</strong></p>
+          <p>Or as a formula, which is how exams usually want it:</p>
           <div class="math-block" data-math="f(x) = \begin{cases} 1/4 & \text{if } x = 0 \\ 1/2 & \text{if } x = 1 \\ 1/4 & \text{if } x = 2 \\ 0 & \text{otherwise} \end{cases}"></div>
 
-          <p><strong>As a single formula</strong>, when one exists:</p>
-          <div class="math-block" data-math="f(x) = \frac{\binom{2}{x}}{4}, \qquad x = 0, 1, 2"></div>
-          <p class="caption">Check: <span class="math-inline" data-math="\binom{2}{0} = 1,\; \binom{2}{1} = 2,\; \binom{2}{2} = 1"></span>, giving 1/4, 2/4, 1/4. This pattern comes back with the Binomial distribution.</p>
+          <p>The last line matters. What is <span class="math-inline" data-math="f(5)"></span>? Getting 5 heads from two coins is impossible, so <span class="math-inline" data-math="f(5) = 0"></span>. Same for <span class="math-inline" data-math="f(-3)"></span> or <span class="math-inline" data-math="f(1.5)"></span>. Any value outside the range gets probability 0, so always include the "otherwise, 0" line.</p>
 
-          <p>Exams usually expect the table or the piecewise form. The "otherwise, 0" line is part of the function, so include it.</p>
+          <div class="key-insight">
+            <span class="key-tag">Exam trap</span>
+            Before calculating <span class="math-inline" data-math="P(X = x)"></span>, check whether <span class="math-inline" data-math="x"></span> is in the range at all. If it isn't, the answer is 0.
+          </div>
+
+          <h3>Step 3. Its names</h3>
+
+          <p>Now that you know what it is, here's where it fits and what else it's called:</p>
+
+          <div class="ladder">
+            <a class="ladder-step" href="#probability-distribution">
+              <span class="ladder-tag">Previous stop</span>
+              <strong>Probability distribution</strong>
+              <p>The idea: how the total probability of 1 is spread over the values of <span class="math-inline" data-math="X"></span>.</p>
+            </a>
+            <div class="ladder-step ladder-indent">
+              <span class="ladder-tag">This stop</span>
+              <strong>Probability function</strong>
+              <p>The same distribution written as a formula, <span class="math-inline" data-math="f(x) = P(X = x)"></span>.</p>
+            </div>
+            <div class="ladder-split ladder-indent-2">
+              <div class="ladder-step">
+                <span class="ladder-tag">Discrete X</span>
+                <strong>PMF</strong>
+                <p>Probability mass function. Probabilities sit on individual values. This page.</p>
+              </div>
+              <div class="ladder-step ladder-muted">
+                <span class="ladder-tag">Continuous X</span>
+                <strong>PDF</strong>
+                <p>Probability density function. Probability comes from area under a curve. <a href="unit2.html#pdf">Unit 2</a>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-insight">
+            <span class="key-tag">Same thing, different names</span>
+            For a discrete random variable, <strong>probability function</strong>, <strong>probability mass function (PMF)</strong> and <strong>statistical distribution</strong> all mean this one function. It's written <span class="math-inline" data-math="p(x)"></span> or <span class="math-inline" data-math="f(x)"></span>; the letter doesn't matter.
+          </div>
+
+          <h3>Step 4. What P(X = x) means underneath</h3>
+
+          <p>Where did <span class="math-inline" data-math="f(1) = \tfrac{1}{2}"></span> come from? You found the outcomes with exactly 1 head, HT and TH, and took their probability. That's the precise meaning of <span class="math-inline" data-math="P(X = x)"></span>:</p>
+
+          <div class="math-block" data-math="P(X = x) = P\big(\{\, s \in S \;|\; X(s) = x \,\}\big)"></div>
+
+          <p>In words: the probability of the set of all outcomes <span class="math-inline" data-math="s"></span> that <span class="math-inline" data-math="X"></span> turns into the value <span class="math-inline" data-math="x"></span>. So the two functions work one after the other: <span class="math-inline" data-math="X"></span> turns an outcome into a number, then <span class="math-inline" data-math="f"></span> gives the probability of that number.</p>
+
+          <div class="math-block" data-math="HT \;\xrightarrow{\;X\;}\; 1 \;\xrightarrow{\;f\;}\; \tfrac{1}{2}"></div>
+
+          <p>This also explains Step 2's "otherwise, 0": for <span class="math-inline" data-math="x = 5"></span>, no outcome gives 5 heads, the set is empty, and an empty set has probability 0.</p>
+
+          <p>Every probability about <span class="math-inline" data-math="X"></span> works the same way, including inequalities:</p>
+
+          <table>
+            <thead><tr><th>Shorthand</th><th>Means the probability of</th><th>Two-coin example</th></tr></thead>
+            <tbody>
+              <tr><td><span class="math-inline" data-math="P(X = a)"></span></td><td><span class="math-inline" data-math="\{s \,|\, X(s) = a\}"></span></td><td><span class="math-inline" data-math="P(X = 1) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(X \leq c)"></span></td><td><span class="math-inline" data-math="\{s \,|\, X(s) \leq c\}"></span></td><td><span class="math-inline" data-math="P(X \leq 1) = P\{HT, TH, TT\} = \tfrac{3}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(X > c)"></span></td><td><span class="math-inline" data-math="\{s \,|\, X(s) > c\}"></span></td><td><span class="math-inline" data-math="P(X > 1) = P\{HH\} = \tfrac{1}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(a < X < b)"></span></td><td><span class="math-inline" data-math="\{s \,|\, a < X(s) < b\}"></span></td><td><span class="math-inline" data-math="P(0 < X < 2) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
+            </tbody>
+          </table>
+
+          <h3>Step 5. The exam definition</h3>
 
           <div class="exam-def">
             <span class="exam-def-tag">Exam-ready definition</span>
