@@ -304,29 +304,6 @@
             These diagrams show how one unit of probability is <em>distributed</em> across the possible values of <span class="math-inline" data-math="X"></span>. That's the whole meaning of the word. The book calls them graphs of probability distributions.
           </div>
 
-          <p>That's the intuition. Now the notation. <span class="math-inline" data-math="X"></span> is a function, not an event, so what does <span class="math-inline" data-math="P(X = 1)"></span> actually mean? Here's the bridge:</p>
-
-          <div class="math-block" data-math="P(X = a) \;=\; P\{\, s \in S \;|\; X(s) = a \,\}"></div>
-
-          <p>"The probability that <span class="math-inline" data-math="X"></span> equals <span class="math-inline" data-math="a"></span>" is <em>defined as</em> the probability of the set of outcomes that make <span class="math-inline" data-math="X"></span> equal <span class="math-inline" data-math="a"></span>. That's what the bar chart was doing: <span class="math-inline" data-math="P(X = 1)"></span> is the probability of <span class="math-inline" data-math="\{HT, TH\}"></span>. Every probability statement about <span class="math-inline" data-math="X"></span> is really a statement about a subset of <span class="math-inline" data-math="S"></span>, and the same pattern holds for every kind of inequality:</p>
-
-          <table>
-            <thead><tr><th>Shorthand</th><th>What it actually means</th><th>Two-coin example (<span class="math-inline" data-math="X"></span> = heads)</th></tr></thead>
-            <tbody>
-              <tr><td><span class="math-inline" data-math="P(X = a)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) = a\}"></span></td><td><span class="math-inline" data-math="P(X = 1) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
-              <tr><td><span class="math-inline" data-math="P(X \leq c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) \leq c\}"></span></td><td><span class="math-inline" data-math="P(X \leq 1) = P\{HT, TH, TT\} = \tfrac{3}{4}"></span></td></tr>
-              <tr><td><span class="math-inline" data-math="P(X > c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) > c\}"></span></td><td><span class="math-inline" data-math="P(X > 1) = P\{HH\} = \tfrac{1}{4}"></span></td></tr>
-              <tr><td><span class="math-inline" data-math="P(a < X < b)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, a < X(s) < b\}"></span></td><td><span class="math-inline" data-math="P(0 < X < 2) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
-            </tbody>
-          </table>
-
-          <div class="key-insight">
-            <span class="key-tag">Complement rule</span>
-            <span class="math-inline" data-math="X \leq c"></span> and <span class="math-inline" data-math="X > c"></span> split <span class="math-inline" data-math="S"></span> into two halves, so:
-            <div class="math-block" data-math="P(X \leq c) + P(X > c) = 1 \qquad\Longrightarrow\qquad P(X > c) = 1 - P(X \leq c)"></div>
-            Check it on the table: <span class="math-inline" data-math="\tfrac{3}{4} + \tfrac{1}{4} = 1"></span>. On exams, compute whichever side is easier and subtract from 1.
-          </div>
-
           <p>So a <strong>discrete probability distribution</strong> is the pairing of each value of <span class="math-inline" data-math="X"></span> with its probability. It answers two questions at once:</p>
           <ol>
             <li>What values can <span class="math-inline" data-math="X"></span> take?</li>
@@ -409,15 +386,27 @@
 
           <h3>What P(X = x) really means</h3>
 
-          <p>Written out in full, the right-hand side is a set of outcomes:</p>
+          <p><span class="math-inline" data-math="X"></span> is a function, not an event, so what does <span class="math-inline" data-math="P(X = x)"></span> actually mean? Written out in full, it's the probability of a set of outcomes:</p>
 
-          <div class="math-block" data-math="f(x) = P\big(\{\, s \in S \;|\; X(s) = x \,\}\big)"></div>
+          <div class="math-block" data-math="f(x) = P(X = x) = P\big(\{\, s \in S \;|\; X(s) = x \,\}\big)"></div>
 
-          <p>Collect every outcome whose <span class="math-inline" data-math="X"></span>-value equals <span class="math-inline" data-math="x"></span>. That collection is an event, and <span class="math-inline" data-math="f(x)"></span> is its probability. Two coins, <span class="math-inline" data-math="X"></span> = number of heads:</p>
+          <p>Collect every outcome whose <span class="math-inline" data-math="X"></span>-value equals <span class="math-inline" data-math="x"></span>. That collection is an event, and <span class="math-inline" data-math="f(x)"></span> is its probability. This is exactly what the bar chart did when it counted outcomes. Two coins, <span class="math-inline" data-math="X"></span> = number of heads:</p>
 
           <div class="math-block" data-math="\begin{aligned} f(1) &= P(\{HT,\, TH\}) = \tfrac{2}{4} = \tfrac{1}{2} \\[4pt] f(5) &= P(\{\,\}) = 0 \qquad \text{(no outcome has 5 heads)} \end{aligned}"></div>
 
           <p>That second line explains why <span class="math-inline" data-math="f(x) = 0"></span> outside the range. It isn't a separate rule to memorise. For an impossible value, the set of outcomes is empty, and the empty set has probability 0.</p>
+
+          <p>The same pattern works for every kind of inequality. Each one is the probability of a subset of <span class="math-inline" data-math="S"></span>:</p>
+
+          <table>
+            <thead><tr><th>Shorthand</th><th>What it actually means</th><th>Two-coin example (<span class="math-inline" data-math="X"></span> = heads)</th></tr></thead>
+            <tbody>
+              <tr><td><span class="math-inline" data-math="P(X = a)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) = a\}"></span></td><td><span class="math-inline" data-math="P(X = 1) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(X \leq c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) \leq c\}"></span></td><td><span class="math-inline" data-math="P(X \leq 1) = P\{HT, TH, TT\} = \tfrac{3}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(X > c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) > c\}"></span></td><td><span class="math-inline" data-math="P(X > 1) = P\{HH\} = \tfrac{1}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(a < X < b)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, a < X(s) < b\}"></span></td><td><span class="math-inline" data-math="P(0 < X < 2) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
+            </tbody>
+          </table>
 
           <div class="key-insight">
             <span class="key-tag">Exam trap</span>
@@ -526,7 +515,13 @@
 
           <p><strong>3. Computing a probability.</strong> With the same table, find <span class="math-inline" data-math="P(X \geq 2)"></span>. Add <span class="math-inline" data-math="f(x)"></span> over the values the inequality picks out:</p>
           <div class="math-block" data-math="P(X \geq 2) = f(2) + f(3) = \tfrac{3}{10} + \tfrac{4}{10} = \tfrac{7}{10}"></div>
-          <p>Or use the complement rule from earlier:</p>
+          <div class="key-insight">
+            <span class="key-tag">Complement rule</span>
+            <span class="math-inline" data-math="X \leq c"></span> and <span class="math-inline" data-math="X > c"></span> split <span class="math-inline" data-math="S"></span> into two parts that don't overlap, so their probabilities add to 1:
+            <div class="math-block" data-math="P(X \leq c) + P(X > c) = 1 \qquad\Longrightarrow\qquad P(X > c) = 1 - P(X \leq c)"></div>
+            On exams, compute whichever side has fewer terms and subtract from 1.
+          </div>
+          <p>Applied here, <span class="math-inline" data-math="X \geq 2"></span> is the same as <span class="math-inline" data-math="X > 1"></span>, so:</p>
           <div class="math-block" data-math="P(X \geq 2) = 1 - P(X \leq 1) = 1 - \left(\tfrac{1}{10} + \tfrac{2}{10}\right) = \tfrac{7}{10}"></div>
 
           <div class="exam-def">
