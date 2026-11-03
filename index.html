@@ -174,6 +174,32 @@
             <strong>Range</strong> = the numbers <span class="math-inline" data-math="X"></span> assigns to them (0, 1, 2).
           </div>
 
+          <h3>A second example: two dice</h3>
+
+          <p>Throw a pair of dice and note the sum. Now each outcome is a <em>pair</em> <span class="math-inline" data-math="(i, j)"></span> - first die, second die:</p>
+          <div class="math-block" data-math="S = \{(1,1),\; (1,2),\; \ldots,\; (1,6),\; (2,1),\; \ldots,\; (6,6)\} \quad (36 \text{ points})"></div>
+
+          <p>Define <span class="math-inline" data-math="X"></span> = sum of the two faces:</p>
+          <div class="math-block" data-math="X : S \to \mathbb{R}, \qquad X((i, j)) = i + j"></div>
+
+          <div class="mapping-visual">
+            <div class="map-pair"><span class="map-from">(1,1)</span><span class="map-arrow">→</span><span class="map-to">2</span></div>
+            <div class="map-pair"><span class="map-from">(3,4)</span><span class="map-arrow">→</span><span class="map-to">7</span></div>
+            <div class="map-pair"><span class="map-from">(4,3)</span><span class="map-arrow">→</span><span class="map-to">7</span></div>
+            <div class="map-pair"><span class="map-from">(6,6)</span><span class="map-arrow">→</span><span class="map-to">12</span></div>
+          </div>
+
+          <div class="math-block" data-math="R_X = \{2, 3, 4, \ldots, 12\}"></div>
+
+          <p>Two things this example shows that the coin didn't. The input to <span class="math-inline" data-math="X"></span> can be a tuple, not a single symbol. And the outcomes were already numbers - <span class="math-inline" data-math="X"></span> still earns its keep by <em>combining</em> them into the one number we care about.</p>
+
+          <div class="key-insight">
+            <span class="key-tag">Building new random variables</span>
+            If <span class="math-inline" data-math="X"></span> and <span class="math-inline" data-math="Y"></span> are random variables on the same <span class="math-inline" data-math="S"></span>, then so are <span class="math-inline" data-math="X + Y"></span>, <span class="math-inline" data-math="X + K"></span>, and <span class="math-inline" data-math="KX"></span> (for any constant <span class="math-inline" data-math="K"></span>). They're defined outcome by outcome:
+            <div class="math-block" data-math="(X + Y)(s) = X(s) + Y(s), \qquad (X + K)(s) = X(s) + K, \qquad (KX)(s) = K \cdot X(s)"></div>
+            The two-dice sum is exactly this: if <span class="math-inline" data-math="X_1"></span> = first die and <span class="math-inline" data-math="X_2"></span> = second die, then "sum" is <span class="math-inline" data-math="X_1 + X_2"></span>. You'll use this constantly when expectation and variance arrive.
+          </div>
+
           <!-- Exam-ready definition restored -->
           <div class="exam-def">
             <span class="exam-def-tag">Exam-ready definition</span>
@@ -198,7 +224,30 @@
           <span class="stop-label">The next layer</span>
           <h2>Attaching probabilities</h2>
 
-          <p>Back to our two-coin-toss example. <span class="math-inline" data-math="X = \{0, 1, 2\}"></span> -but how probable is each?</p>
+          <p>First, what does a statement like <span class="math-inline" data-math="P(X = 2)"></span> even mean? <span class="math-inline" data-math="X"></span> is a function, not an event. Here's the bridge:</p>
+
+          <div class="math-block" data-math="P(X = a) \;=\; P\{\, s \in S \;|\; X(s) = a \,\}"></div>
+
+          <p>"The probability that <span class="math-inline" data-math="X"></span> equals <span class="math-inline" data-math="a"></span>" is <em>defined as</em> the probability of the set of outcomes that make <span class="math-inline" data-math="X"></span> equal <span class="math-inline" data-math="a"></span>. Every probability statement about <span class="math-inline" data-math="X"></span> is secretly a statement about a subset of <span class="math-inline" data-math="S"></span>. Same pattern for every flavour of inequality:</p>
+
+          <table>
+            <thead><tr><th>Shorthand</th><th>What it actually means</th><th>Two-coin example (<span class="math-inline" data-math="X"></span> = heads)</th></tr></thead>
+            <tbody>
+              <tr><td><span class="math-inline" data-math="P(X = a)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) = a\}"></span></td><td><span class="math-inline" data-math="P(X = 1) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(X \leq c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) \leq c\}"></span></td><td><span class="math-inline" data-math="P(X \leq 1) = P\{HT, TH, TT\} = \tfrac{3}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(X > c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) > c\}"></span></td><td><span class="math-inline" data-math="P(X > 1) = P\{HH\} = \tfrac{1}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(a < X < b)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, a < X(s) < b\}"></span></td><td><span class="math-inline" data-math="P(0 < X < 2) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
+            </tbody>
+          </table>
+
+          <div class="key-insight">
+            <span class="key-tag">Handy identities</span>
+            Since <span class="math-inline" data-math="X \leq c"></span> and <span class="math-inline" data-math="X > c"></span> split <span class="math-inline" data-math="S"></span> into two halves:
+            <div class="math-block" data-math="P(X \leq c) + P(X > c) = 1 \qquad\Longrightarrow\qquad P(X > c) = 1 - P(X \leq c)"></div>
+            Check it on the table: <span class="math-inline" data-math="\tfrac{3}{4} + \tfrac{1}{4} = 1"></span>. The complement form is the one you'll reach for on exams - compute whichever side is easier, subtract from 1.
+          </div>
+
+          <p>Now back to our two-coin-toss example. <span class="math-inline" data-math="X = \{0, 1, 2\}"></span> -but how probable is each?</p>
 
           <p>There are 4 equally likely outcomes. Count how many give each value of <span class="math-inline" data-math="X"></span>:</p>
 

@@ -205,6 +205,11 @@ body {
   color: var(--accent); margin-bottom: 6px;
 }
 
+.key-insight .math-block {
+  margin: 10px 0; padding: 10px 12px; font-size: 14px;
+  background: rgba(0,0,0,0.2);
+}
+
 /* ── Mapping visual ── */
 .mapping-visual {
   display: flex; gap: 12px; flex-wrap: wrap;
