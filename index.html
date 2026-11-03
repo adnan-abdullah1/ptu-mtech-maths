@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 1 -Discrete Random Variables & Probability Distributions</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Sidebar ── -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Maths Notes</h2>
+      <p class="sidebar-sub">M.Tech -Probability &amp; Statistics</p>
+    </div>
+    <div class="sidebar-units">
+      <a href="index.html" class="unit-link active">Unit 1 - Discrete RV &amp; PMF</a>
+      <a href="unit2.html" class="unit-link">Unit 2 - Continuous RV &amp; PDF</a>
+    </div>
+    <ul class="nav-list" id="nav-list"></ul>
+  </nav>
+
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <!-- ── Main ── -->
+  <main class="content">
+
+    <!-- Hero -->
+    <header class="hero">
+      <span class="hero-label">Unit 1</span>
+      <h1>Discrete Random Variables<br>&amp; Probability Distributions</h1>
+      <p class="hero-sub">From a coin flip to the mathematics behind uncertainty.</p>
+    </header>
+
+    <!-- The Journey Line -->
+    <div class="journey">
+
+      <!-- ══ Stop 1: What is a random variable? ══ -->
+
+      <section class="stop" id="the-idea">
+        <div class="stop-marker"></div>
+        <div class="stop-content">
+          <span class="stop-label">The idea</span>
+          <h2>What even is a random variable?</h2>
+
+          <p>Start with something you already know -tossing a coin, rolling a dice. You can't predict the result. That's a <strong>random experiment</strong>.</p>
+
+          <div class="example-row">
+            <div class="example-item">Tossing a coin</div>
+            <div class="example-item">Rolling a dice</div>
+            <div class="example-item">Counting defects in a batch</div>
+            <div class="example-item">Picking a student at random</div>
+          </div>
+
+          <p>Now here's the key move. Take the dice -its outcomes are:</p>
+          <div class="math-block" data-math="S = \{1, 2, 3, 4, 5, 6\}"></div>
+
+          <p>We define a variable <span class="math-inline" data-math="X"></span> = "the number that appears." Now <span class="math-inline" data-math="X"></span> can be 1, 2, 3, 4, 5, or 6.</p>
+
+          <p>That's a <strong>random variable</strong> -a rule that turns experiment outcomes into numbers.</p>
+
+          <ul class="why-list">
+            <li>It's a <em>variable</em> because it takes different values.</li>
+            <li>It's <em>random</em> because which value depends on an unpredictable experiment.</li>
+          </ul>
+
+          <div class="key-insight">
+            <span class="key-tag">Key insight</span>
+            A random variable is not the dice. It's not the coin. It's the <em>mathematical rule</em> that assigns a number to each outcome.
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ Stop 2: Discrete vs Continuous (MOVED UP -concrete before formal) ══ -->
+
+      <section class="stop" id="discrete-vs-continuous">
+        <div class="stop-marker"></div>
+        <div class="stop-content">
+          <span class="stop-label">A distinction</span>
+          <h2>What makes it discrete?</h2>
+
+          <p>Not all random variables are the same. A <strong>discrete</strong> random variable takes countable values -you can list them out. Compare:</p>
+
+          <table>
+            <thead><tr><th>Experiment</th><th>Possible values</th><th>Type</th></tr></thead>
+            <tbody>
+              <tr><td>Rolling a dice</td><td>1, 2, 3, 4, 5, 6</td><td><span class="tag-discrete">Discrete</span></td></tr>
+              <tr><td>Tossing 3 coins (# heads)</td><td>0, 1, 2, 3</td><td><span class="tag-discrete">Discrete</span></td></tr>
+              <tr><td>Server requests per hour</td><td>0, 1, 2, 3, …</td><td><span class="tag-discrete">Discrete</span></td></tr>
+              <tr><td>Height of a person</td><td>165.1, 165.11, …</td><td><span class="tag-continuous">Continuous</span></td></tr>
+              <tr><td>Time to finish a task</td><td>Any real number ≥ 0</td><td><span class="tag-continuous">Continuous</span></td></tr>
+            </tbody>
+          </table>
+
+          <div class="key-insight">
+            <span class="key-tag">Watch out</span>
+            "Countable" doesn't mean finite. Server requests can be 0, 1, 2, 3, … forever -still discrete. Continuous means the values fill an entire interval with no gaps.
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ Stop 3: The formal mapping (after discrete intuition is established) ══ -->
+
+      <section class="stop" id="mapping">
+        <div class="stop-marker"></div>
+        <div class="stop-content">
+          <span class="stop-label">Making it formal</span>
+          <h2>From outcomes to numbers</h2>
+
+          <p>Now that we know what "discrete" means, let's see the mapping in action. Toss a coin twice:</p>
+          <div class="math-block" data-math="S = \{HH,\; HT,\; TH,\; TT\}"></div>
+
+          <p>Define <span class="math-inline" data-math="X"></span> = number of heads. Now every outcome gets a number:</p>
+
+          <div class="mapping-visual">
+            <div class="map-pair"><span class="map-from">HH</span><span class="map-arrow">→</span><span class="map-to">2</span></div>
+            <div class="map-pair"><span class="map-from">HT</span><span class="map-arrow">→</span><span class="map-to">1</span></div>
+            <div class="map-pair"><span class="map-from">TH</span><span class="map-arrow">→</span><span class="map-to">1</span></div>
+            <div class="map-pair"><span class="map-from">TT</span><span class="map-arrow">→</span><span class="map-to">0</span></div>
+          </div>
+
+          <p>This is exactly what the formal definition says:</p>
+          <div class="math-block" data-math="X : S \to \mathbb{R}"></div>
+          <p class="caption"><span class="math-inline" data-math="X"></span> is a function from the sample space <span class="math-inline" data-math="S"></span> to the real numbers <span class="math-inline" data-math="\mathbb{R}"></span>.</p>
+
+          <p>The <strong>range</strong> of <span class="math-inline" data-math="X"></span> -the set of numbers it actually produces -is:</p>
+          <div class="math-block" data-math="R_X = \{0, 1, 2\}"></div>
+
+          <p>Since we can list these values (there are exactly three), <span class="math-inline" data-math="X"></span> is a <strong>discrete</strong> random variable.</p>
+
+          <div class="key-insight">
+            <span class="key-tag">Don't confuse</span>
+            <strong>Sample space</strong> = original outcomes (HH, HT, …).<br>
+            <strong>Range</strong> = the numbers <span class="math-inline" data-math="X"></span> assigns to them (0, 1, 2).
+          </div>
+
+          <!-- Exam-ready definition restored -->
+          <div class="exam-def">
+            <span class="exam-def-tag">Exam-ready definition</span>
+            <p>A discrete random variable is a function that assigns a real number to each outcome of a random experiment, and its range consists of a finite or countably infinite set of distinct values.</p>
+            <div class="math-block" data-math="X : S \to \mathbb{R}"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Transition to probabilities ── -->
+
+      <div class="transition">
+        <p>So now we know what <span class="math-inline" data-math="X"></span> is, what "discrete" means, and how to map outcomes to numbers. But that's only half the picture.<br>
+        We need to know <em>how likely</em> each value is.</p>
+      </div>
+
+      <!-- ══ Stop 4: Probability Distribution ══ -->
+
+      <section class="stop" id="probability-distribution">
+        <div class="stop-marker"></div>
+        <div class="stop-content">
+          <span class="stop-label">The next layer</span>
+          <h2>Attaching probabilities</h2>
+
+          <p>Back to our two-coin-toss example. <span class="math-inline" data-math="X = \{0, 1, 2\}"></span> -but how probable is each?</p>
+
+          <p>There are 4 equally likely outcomes. Count how many give each value of <span class="math-inline" data-math="X"></span>:</p>
+
+          <div class="dist-visual">
+            <div class="dist-bar-group">
+              <div class="dist-bar" style="--h: 25%;">
+                <span class="dist-val"><span class="math-inline" data-math="\frac{1}{4}"></span></span>
+              </div>
+              <span class="dist-label"><span class="math-inline" data-math="X=0"></span></span>
+              <span class="dist-sub">TT</span>
+            </div>
+            <div class="dist-bar-group">
+              <div class="dist-bar" style="--h: 50%;">
+                <span class="dist-val"><span class="math-inline" data-math="\frac{1}{2}"></span></span>
+              </div>
+              <span class="dist-label"><span class="math-inline" data-math="X=1"></span></span>
+              <span class="dist-sub">HT, TH</span>
+            </div>
+            <div class="dist-bar-group">
+              <div class="dist-bar" style="--h: 25%;">
+                <span class="dist-val"><span class="math-inline" data-math="\frac{1}{4}"></span></span>
+              </div>
+              <span class="dist-label"><span class="math-inline" data-math="X=2"></span></span>
+              <span class="dist-sub">HH</span>
+            </div>
+          </div>
+
+          <p>This -the values plus their probabilities -is the <strong>discrete probability distribution</strong>. It answers two questions at once:</p>
+          <ol>
+            <li>What values can <span class="math-inline" data-math="X"></span> take?</li>
+            <li>How likely is each one?</li>
+          </ol>
+
+          <!-- Exam-ready definition restored -->
+          <div class="exam-def">
+            <span class="exam-def-tag">Exam-ready definition</span>
+            <p>A discrete probability distribution describes the probabilities associated with all possible values of a discrete random variable. It specifies the probability of each possible value that the random variable can assume.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ Stop 5: PMF ══ -->
+
+      <section class="stop" id="pmf">
+        <div class="stop-marker"></div>
+        <div class="stop-content">
+          <span class="stop-label">The notation</span>
+          <h2>Probability Mass Function (PMF)</h2>
+
+          <p>The textbook wraps this idea in a function:</p>
+          <div class="math-block" data-math="P(X = x_k) = f(x_k)"></div>
+
+          <p>This looks abstract, but it's saying something simple:</p>
+
+          <ul class="why-list">
+            <li><span class="math-inline" data-math="X"></span> -the random variable.</li>
+            <li><span class="math-inline" data-math="x_k"></span> -a specific value it can take.</li>
+            <li><span class="math-inline" data-math="f(x_k)"></span> -"give me the probability of that value."</li>
+          </ul>
+
+          <p>For our example, the full PMF is:</p>
+
+          <div class="math-block" data-math="f(x) = \begin{cases} 1/4 & \text{if } x = 0 \\ 1/2 & \text{if } x = 1 \\ 1/4 & \text{if } x = 2 \\ 0 & \text{otherwise} \end{cases}"></div>
+
+          <!-- Expanded zero-outside-range explanation -->
+          <p>That last line -the "otherwise" -is important. What happens if someone asks <span class="math-inline" data-math="P(X = 5)"></span>?</p>
+
+          <div class="math-block" data-math="f(5) = 0, \quad f(10) = 0, \quad f(-3) = 0"></div>
+
+          <p>All zero. Getting 5 heads, 10 heads, or −3 heads in two coin tosses is impossible. The PMF assigns <strong>zero probability to every value outside the range</strong> of <span class="math-inline" data-math="X"></span>.</p>
+
+          <div class="key-insight">
+            <span class="key-tag">Remember</span>
+            The probability function only gives non-zero values for <span class="math-inline" data-math="x \in R_X"></span> (the range). For everything else, <span class="math-inline" data-math="f(x) = 0"></span>. This is a common exam trap -always check whether the asked value is even in the range.
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ Stop 6: The two rules ══ -->
+
+      <section class="stop" id="conditions">
+        <div class="stop-marker"></div>
+        <div class="stop-content">
+          <span class="stop-label">The rules</span>
+          <h2>When is a function a valid PMF?</h2>
+
+          <p>Not every function qualifies. Two conditions must hold:</p>
+
+          <div class="rules-grid">
+            <div class="rule-card">
+              <span class="rule-num">1</span>
+              <div>
+                <strong>Non-negativity</strong>
+                <div class="math-block" data-math="f(x) \geq 0"></div>
+                <p>Probabilities can't be negative.</p>
+              </div>
+            </div>
+            <div class="rule-card">
+              <span class="rule-num">2</span>
+              <div>
+                <strong>Normalization</strong>
+                <div class="math-block" data-math="\displaystyle\sum_x f(x) = 1"></div>
+                <p>Total probability must equal 1 -something has to happen.</p>
+              </div>
+            </div>
+          </div>
+
+          <p>Let's verify our coin example:</p>
+          <div class="math-block" data-math="\underbrace{\frac{1}{4}}_{\geq\,0} + \underbrace{\frac{1}{2}}_{\geq\,0} + \underbrace{\frac{1}{4}}_{\geq\,0} = 1 \quad\checkmark"></div>
+
+          <p>Now try this one:</p>
+          <table class="compact">
+            <thead><tr><th><span class="math-inline" data-math="x"></span></th><th><span class="math-inline" data-math="f(x)"></span></th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0.2</td></tr>
+              <tr><td>1</td><td>0.3</td></tr>
+              <tr><td>2</td><td>0.4</td></tr>
+            </tbody>
+          </table>
+          <p><span class="math-inline" data-math="0.2 + 0.3 + 0.4 = 0.9 \neq 1"></span>. Fails condition 2. <strong>Not a valid PMF.</strong></p>
+        </div>
+      </section>
+
+      <!-- ══ Stop 7: The big picture (restored from section 8) ══ -->
+
+      <section class="stop" id="big-picture">
+        <div class="stop-marker"></div>
+        <div class="stop-content">
+          <span class="stop-label">Putting it together</span>
+          <h2>The complete chain</h2>
+
+          <p>Every problem in this unit follows the same sequence:</p>
+
+          <div class="flow-chain">
+            <span>Random experiment</span>
+            <span class="flow-arrow">→</span>
+            <span>Sample space</span>
+            <span class="flow-arrow">→</span>
+            <span>Random variable</span>
+            <span class="flow-arrow">→</span>
+            <span>Possible values</span>
+            <span class="flow-arrow">→</span>
+            <span>Probability distribution</span>
+            <span class="flow-arrow">→</span>
+            <span>PMF</span>
+          </div>
+
+          <p>First, we perform a <strong>random experiment</strong> -something with an unpredictable outcome. Then we list every possible outcome in the <strong>sample space</strong>. Next, we define a <strong>random variable</strong> -a rule that maps each outcome to a number. Once we know all possible numerical values, we calculate the probability of each one to get the <strong>probability distribution</strong>. Finally, we express those probabilities as a function -the <strong>PMF</strong> -and verify it satisfies both conditions (non-negative, sums to 1).</p>
+
+          <div class="key-insight">
+            <span class="key-tag">Foundation</span>
+            This chain is the foundation for everything ahead -expected value, variance, and the standard distributions (Binomial, Poisson). If any step in the chain is unclear, the rest won't make sense.
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Transition to practice ── -->
+
+      <div class="transition">
+        <p>Now let's make sure you can use all of this.</p>
+      </div>
+
+      <!-- ══ Stop 8: Practice ══ -->
+
+      <section class="stop" id="practice">
+        <div class="stop-marker"></div>
+        <div class="stop-content">
+          <span class="stop-label">Test yourself</span>
+          <h2>Practice Questions</h2>
+
+          <div class="question">
+            <h3>Q1 -Rolling a dice</h3>
+            <p>A fair dice is rolled once. <span class="math-inline" data-math="X"></span> = number appearing. Find the sample space, range, <span class="math-inline" data-math="P(X=3)"></span>, and whether <span class="math-inline" data-math="X"></span> is discrete.</p>
+            <p class="think-first">Try this on paper before expanding.</p>
+            <details class="solution">
+              <summary>Solution</summary>
+              <div class="solution-body">
+                <div class="math-block" data-math="S = \{1,2,3,4,5,6\}, \quad X = \{1,2,3,4,5,6\}"></div>
+                <div class="math-block" data-math="P(X = 3) = \frac{1}{6}"></div>
+                <p><span class="math-inline" data-math="X"></span> is discrete -six distinct values.</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="question">
+            <h3>Q2 -Valid or not?</h3>
+            <table class="compact">
+              <thead><tr><th><span class="math-inline" data-math="x"></span></th><th><span class="math-inline" data-math="f(x)"></span></th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>0.2</td></tr>
+                <tr><td>2</td><td>0.3</td></tr>
+                <tr><td>3</td><td>0.5</td></tr>
+              </tbody>
+            </table>
+            <p class="think-first">Check both conditions before expanding.</p>
+            <details class="solution">
+              <summary>Solution</summary>
+              <div class="solution-body">
+                <p>All values ≥ 0 ✓</p>
+                <div class="math-block" data-math="0.2 + 0.3 + 0.5 = 1 \quad\checkmark"></div>
+                <p><strong>Valid</strong> probability function.</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="question">
+            <h3>Q3 -Find the missing value</h3>
+            <p>A random variable <span class="math-inline" data-math="X"></span> has the following probability distribution:</p>
+            <table class="compact">
+              <thead><tr><th><span class="math-inline" data-math="x"></span></th><th><span class="math-inline" data-math="f(x)"></span></th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>0.3</td></tr>
+                <tr><td>2</td><td><span class="math-inline" data-math="k"></span></td></tr>
+                <tr><td>3</td><td>0.2</td></tr>
+              </tbody>
+            </table>
+            <p>Find <span class="math-inline" data-math="k"></span>.</p>
+            <p class="think-first">Which condition tells you what the total must be?</p>
+            <details class="solution">
+              <summary>Solution</summary>
+              <div class="solution-body">
+                <p>By the normalization condition:</p>
+                <div class="math-block" data-math="0.3 + k + 0.2 = 1"></div>
+                <div class="math-block" data-math="k = 1 - 0.5 = 0.5"></div>
+                <p>Check: <span class="math-inline" data-math="k = 0.5 \geq 0"></span> ✓ -satisfies non-negativity too.</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="question">
+            <h3>Q4 -Build a distribution from scratch</h3>
+            <p>Coin tossed twice. <span class="math-inline" data-math="X"></span> = number of heads. Find the full probability distribution.</p>
+            <p class="think-first">Start by writing the sample space, then map each outcome.</p>
+            <details class="solution">
+              <summary>Solution</summary>
+              <div class="solution-body">
+                <div class="math-block" data-math="S = \{HH, HT, TH, TT\}"></div>
+                <p>HH→2, HT→1, TH→1, TT→0</p>
+                <table class="compact">
+                  <thead><tr><th><span class="math-inline" data-math="X"></span></th><th><span class="math-inline" data-math="P(X=x)"></span></th></tr></thead>
+                  <tbody>
+                    <tr><td>0</td><td><span class="math-inline" data-math="1/4"></span></td></tr>
+                    <tr><td>1</td><td><span class="math-inline" data-math="1/2"></span></td></tr>
+                    <tr><td>2</td><td><span class="math-inline" data-math="1/4"></span></td></tr>
+                  </tbody>
+                </table>
+                <p>Check: <span class="math-inline" data-math="\frac{1}{4}+\frac{1}{2}+\frac{1}{4}=1"></span> ✓</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ Stop 9: Quick Reference ══ -->
+
+      <section class="stop" id="reference">
+        <div class="stop-marker"></div>
+        <div class="stop-content">
+          <span class="stop-label">Quick reference</span>
+          <h2>Formulas for Examination</h2>
+
+          <div class="ref-grid">
+            <div class="ref-item">
+              <span class="ref-label">Random variable</span>
+              <div class="math-block" data-math="X : S \to \mathbb{R}"></div>
+            </div>
+            <div class="ref-item">
+              <span class="ref-label">PMF</span>
+              <div class="math-block" data-math="P(X = x) = f(x)"></div>
+            </div>
+            <div class="ref-item">
+              <span class="ref-label">Non-negativity</span>
+              <div class="math-block" data-math="f(x) \geq 0"></div>
+            </div>
+            <div class="ref-item">
+              <span class="ref-label">Normalization</span>
+              <div class="math-block" data-math="\sum_x f(x) = 1"></div>
+            </div>
+            <div class="ref-item">
+              <span class="ref-label">Outside range</span>
+              <div class="math-block" data-math="f(x) = 0"></div>
+            </div>
+          </div>
+
+          <table>
+            <thead><tr><th>Concept</th><th>One-line meaning</th></tr></thead>
+            <tbody>
+              <tr><td>Random variable <span class="math-inline" data-math="X"></span></td><td>Rule that assigns numbers to experiment outcomes</td></tr>
+              <tr><td>Sample space <span class="math-inline" data-math="S"></span></td><td>All possible outcomes</td></tr>
+              <tr><td>Range <span class="math-inline" data-math="R_X"></span></td><td>All values <span class="math-inline" data-math="X"></span> can actually take</td></tr>
+              <tr><td>Discrete</td><td>Countable (finite or infinite) distinct values</td></tr>
+              <tr><td>PMF <span class="math-inline" data-math="f(x)"></span></td><td>Probability for each value of <span class="math-inline" data-math="X"></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div><!-- /journey -->
+
+    <!-- ── What's next ── -->
+    <div class="whats-next">
+      <p>Next up: <strong>Expected Value</strong>, <strong>Variance</strong>, and standard distributions (Binomial, Poisson).</p>
+    </div>
+
+    <footer class="page-footer">
+      <p>Maths Notes -M.Tech Probability &amp; Statistics</p>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
