@@ -97,48 +97,24 @@
           <span class="stop-label">A distinction</span>
           <h2>What makes it discrete?</h2>
 
-          <p>Not all random variables are the same. A <strong>discrete</strong> random variable takes countable values -you can list them out. Compare:</p>
+          <p>A random variable <span class="math-inline" data-math="X"></span> is <strong>discrete</strong> if it takes only separate, listable values, like <span class="math-inline" data-math="\{0, 1, 2, \ldots, n\}"></span>. These are the standard examples:</p>
 
           <table>
             <thead><tr><th>Experiment</th><th>Possible values</th><th>Type</th></tr></thead>
             <tbody>
-              <tr><td>Rolling a dice</td><td>1, 2, 3, 4, 5, 6</td><td><span class="tag-discrete">Discrete</span></td></tr>
-              <tr><td>Tossing 3 coins (# heads)</td><td>0, 1, 2, 3</td><td><span class="tag-discrete">Discrete</span></td></tr>
-              <tr><td>Server requests per hour</td><td>0, 1, 2, 3, …</td><td><span class="tag-discrete">Discrete</span></td></tr>
+              <tr><td>Tossing a coin (heads)</td><td>0, 1</td><td><span class="tag-discrete">Discrete</span></td></tr>
+              <tr><td>Throwing a dice</td><td>1, 2, 3, 4, 5, 6</td><td><span class="tag-discrete">Discrete</span></td></tr>
+              <tr><td>Defective bulbs in a sample of n</td><td>0, 1, …, n</td><td><span class="tag-discrete">Discrete</span></td></tr>
+              <tr><td>Printing mistakes on a page</td><td>0, 1, 2, …</td><td><span class="tag-discrete">Discrete</span></td></tr>
+              <tr><td>Phone calls received by an operator</td><td>0, 1, 2, …</td><td><span class="tag-discrete">Discrete</span></td></tr>
               <tr><td>Height of a person</td><td>165.1, 165.11, …</td><td><span class="tag-continuous">Continuous</span></td></tr>
               <tr><td>Time to finish a task</td><td>Any real number ≥ 0</td><td><span class="tag-continuous">Continuous</span></td></tr>
             </tbody>
           </table>
 
           <div class="key-insight">
-            <span class="key-tag">Watch out</span>
-            "Countable" doesn't mean finite. Server requests can be 0, 1, 2, 3, … forever -still discrete. Continuous means the values fill an entire interval with no gaps.
-          </div>
-
-          <h3>The textbook's version</h3>
-
-          <p>The book defines it like this: a random variable <span class="math-inline" data-math="X"></span> that takes only a <strong>finite</strong> number of discrete values, such as the set <span class="math-inline" data-math="\{0, 1, 2, \ldots, n\}"></span>, is a discrete random variable.</p>
-
-          <p>Its examples are the ones you'll see in exam questions:</p>
-          <div class="example-row">
-            <div class="example-item">Tossing a coin</div>
-            <div class="example-item">Throwing a dice</div>
-            <div class="example-item">Defective bulbs in a sample</div>
-            <div class="example-item">Printing mistakes on a page</div>
-            <div class="example-item">Phone calls received by an operator</div>
-          </div>
-
-          <p>And it ties back to the function view: to each outcome <span class="math-inline" data-math="s"></span> of the experiment there corresponds a real number <span class="math-inline" data-math="X(s)"></span>, defined for every point of <span class="math-inline" data-math="S"></span>.</p>
-
-          <p>Two of its worked examples:</p>
-          <ul class="why-list">
-            <li>Two coin tosses, <span class="math-inline" data-math="X"></span> = number of tails: range of <span class="math-inline" data-math="X"></span> is <span class="math-inline" data-math="\{0, 1, 2\}"></span>. Discrete.</li>
-            <li>Number of students in a class: values are positive integers. Discrete.</li>
-          </ul>
-
-          <div class="key-insight">
-            <span class="key-tag">Book vs full definition</span>
-            The book says "finite," but its own examples go further. Printing mistakes and phone calls have no fixed upper limit, so they're countably infinite. The complete definition is <strong>finite or countably infinite</strong>. If your exam follows the book, "finite number of discrete values" is the wording to write. Know that the full version also includes the infinite case.
+            <span class="key-tag">Finite or countably infinite</span>
+            Your book says a discrete variable takes a <strong>finite</strong> number of values. But printing mistakes and phone calls have no fixed upper limit, so they go 0, 1, 2, … forever. That's still discrete, because you can list the values. The complete definition is <strong>finite or countably infinite</strong>. If your exam follows the book, write "finite"; just know the full version includes the infinite case. Continuous is different: the values fill an entire interval with no gaps.
           </div>
         </div>
       </section>
