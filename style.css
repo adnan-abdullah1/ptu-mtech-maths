@@ -381,6 +381,9 @@ ol li { padding: 2px 0; }
   font-size: 10px; font-weight: 700; text-transform: uppercase;
   letter-spacing: .08em; color: var(--accent);
 }
+a.ladder-step { display: block; text-decoration: none; transition: border-color .15s; }
+a.ladder-step:hover { border-color: var(--accent); }
+.ladder-step p a { color: var(--accent); }
 .ladder-indent { margin-left: 24px; }
 .ladder-indent-2 { margin-left: 48px; }
 .ladder-split { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
