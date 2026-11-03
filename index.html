@@ -246,26 +246,62 @@
 
           <div class="dist-visual">
             <div class="dist-bar-group">
-              <div class="dist-bar" style="--h: 25%;">
+              <div class="dist-bar" style="--h: 25;">
                 <span class="dist-val"><span class="math-inline" data-math="\frac{1}{4}"></span></span>
               </div>
               <span class="dist-label"><span class="math-inline" data-math="X=0"></span></span>
               <span class="dist-sub">TT</span>
             </div>
             <div class="dist-bar-group">
-              <div class="dist-bar" style="--h: 50%;">
+              <div class="dist-bar" style="--h: 50;">
                 <span class="dist-val"><span class="math-inline" data-math="\frac{1}{2}"></span></span>
               </div>
               <span class="dist-label"><span class="math-inline" data-math="X=1"></span></span>
               <span class="dist-sub">HT, TH</span>
             </div>
             <div class="dist-bar-group">
-              <div class="dist-bar" style="--h: 25%;">
+              <div class="dist-bar" style="--h: 25;">
                 <span class="dist-val"><span class="math-inline" data-math="\frac{1}{4}"></span></span>
               </div>
               <span class="dist-label"><span class="math-inline" data-math="X=2"></span></span>
               <span class="dist-sub">HH</span>
             </div>
+          </div>
+
+          <p>Compare that with a single die. <span class="math-inline" data-math="X"></span> = number on the top face. Six outcomes, each equally likely:</p>
+
+          <div class="dist-visual six">
+            <div class="dist-bar-group">
+              <div class="dist-bar" style="--h: 16.7;"><span class="dist-val"><span class="math-inline" data-math="\tfrac{1}{6}"></span></span></div>
+              <span class="dist-label">1</span>
+            </div>
+            <div class="dist-bar-group">
+              <div class="dist-bar" style="--h: 16.7;"><span class="dist-val"><span class="math-inline" data-math="\tfrac{1}{6}"></span></span></div>
+              <span class="dist-label">2</span>
+            </div>
+            <div class="dist-bar-group">
+              <div class="dist-bar" style="--h: 16.7;"><span class="dist-val"><span class="math-inline" data-math="\tfrac{1}{6}"></span></span></div>
+              <span class="dist-label">3</span>
+            </div>
+            <div class="dist-bar-group">
+              <div class="dist-bar" style="--h: 16.7;"><span class="dist-val"><span class="math-inline" data-math="\tfrac{1}{6}"></span></span></div>
+              <span class="dist-label">4</span>
+            </div>
+            <div class="dist-bar-group">
+              <div class="dist-bar" style="--h: 16.7;"><span class="dist-val"><span class="math-inline" data-math="\tfrac{1}{6}"></span></span></div>
+              <span class="dist-label">5</span>
+            </div>
+            <div class="dist-bar-group">
+              <div class="dist-bar" style="--h: 16.7;"><span class="dist-val"><span class="math-inline" data-math="\tfrac{1}{6}"></span></span></div>
+              <span class="dist-label">6</span>
+            </div>
+          </div>
+
+          <p>The coin chart is peaked in the middle; the die chart is flat. But both show the same thing: the total probability, which is 1, being <em>spread out</em> over the range of <span class="math-inline" data-math="X"></span>. For the coin, <span class="math-inline" data-math="\tfrac{1}{4} + \tfrac{1}{2} + \tfrac{1}{4} = 1"></span>. For the die, six lots of <span class="math-inline" data-math="\tfrac{1}{6}"></span> make 1. It has to add up to 1 because <span class="math-inline" data-math="X"></span> is bound to land on <em>one</em> of the values in its range.</p>
+
+          <div class="key-insight">
+            <span class="key-tag">Why it's called a "distribution"</span>
+            These diagrams show how one unit of probability is <em>distributed</em> across the possible values of <span class="math-inline" data-math="X"></span>. That's the whole meaning of the word. The book calls them graphs of probability distributions.
           </div>
 
           <p>That's the intuition. Now the notation. <span class="math-inline" data-math="X"></span> is a function, not an event, so what does <span class="math-inline" data-math="P(X = 1)"></span> actually mean? Here's the bridge:</p>
@@ -291,7 +327,7 @@
             Check it on the table: <span class="math-inline" data-math="\tfrac{3}{4} + \tfrac{1}{4} = 1"></span>. On exams, compute whichever side is easier and subtract from 1.
           </div>
 
-          <p>The values together with their probabilities form the <strong>discrete probability distribution</strong>. It answers two questions at once:</p>
+          <p>So a <strong>discrete probability distribution</strong> is the pairing of each value of <span class="math-inline" data-math="X"></span> with its probability. It answers two questions at once:</p>
           <ol>
             <li>What values can <span class="math-inline" data-math="X"></span> take?</li>
             <li>How likely is each one?</li>
@@ -313,7 +349,7 @@
           <span class="stop-label">The notation</span>
           <h2>Probability Mass Function (PMF)</h2>
 
-          <p>The textbook wraps this idea in a function:</p>
+          <p>The bar charts in the last stop can each be described by a mathematical function: feed in a value of <span class="math-inline" data-math="X"></span>, get back its probability. The book calls this the <strong>probability function</strong> or <strong>statistical distribution</strong>; the standard name for the discrete case is <strong>probability mass function</strong>. All three mean this:</p>
           <div class="math-block" data-math="P(X = x_k) = f(x_k)"></div>
 
           <p>This looks abstract, but it's saying something simple:</p>
