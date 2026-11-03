@@ -65,26 +65,19 @@
             <div class="example-item">Picking a student at random</div>
           </div>
 
-          <p>Now here's the key move. Take the dice -its outcomes are:</p>
+          <p>Take the dice. Its outcomes are:</p>
           <div class="math-block" data-math="S = \{1, 2, 3, 4, 5, 6\}"></div>
 
-          <p>We define a variable <span class="math-inline" data-math="X"></span> = "the number that appears." Now <span class="math-inline" data-math="X"></span> can be 1, 2, 3, 4, 5, or 6.</p>
-
-          <p>That's a <strong>random variable</strong> -a rule that turns experiment outcomes into numbers.</p>
-
-          <ul class="why-list">
-            <li>It's a <em>variable</em> because it takes different values.</li>
-            <li>It's <em>random</em> because which value depends on an unpredictable experiment.</li>
-          </ul>
+          <p>Define <span class="math-inline" data-math="X"></span> = "the number that appears." Then <span class="math-inline" data-math="X"></span> can be 1, 2, 3, 4, 5, or 6, and which one it is gets decided by the throw. That's a <strong>random variable</strong>: a rule that turns experiment outcomes into numbers. The book also calls it a <strong>stochastic variable</strong> or <strong>chance variable</strong>; all three names mean the same thing.</p>
 
           <div class="key-insight">
             <span class="key-tag">Key insight</span>
             A random variable is not the dice. It's not the coin. It's the <em>mathematical rule</em> that assigns a number to each outcome.
           </div>
 
-          <div class="key-insight">
-            <span class="key-tag">Also known as</span>
-            A random variable is also called a <strong>stochastic variable</strong> or a <strong>chance variable</strong>. Different names, same thing. If you see any of these on the exam, they all mean random variable.
+          <div class="exam-def">
+            <span class="exam-def-tag">Exam-ready definition</span>
+            <p>A random variable is a real variable <span class="math-inline" data-math="X"></span> whose value is determined by the outcome of a random experiment. Equivalently, it is a real-valued function defined on the sample space <span class="math-inline" data-math="S"></span> of the experiment.</p>
           </div>
         </div>
       </section>
@@ -168,17 +161,29 @@
           <div class="math-block" data-math="\begin{aligned} R_X &= \{X(s) : s \in S\} \\ &= \{X(s_1),\; X(s_2),\; X(s_3),\; X(s_4)\} \\ &= \{2,\; 1,\; 1,\; 0\} \\ &= \{0, 1, 2\} \end{aligned}"></div>
           <p class="caption">Line 1 says "collect X(s) for every s in S." Line 2 lists them out using the textbook's labels <span class="math-inline" data-math="s_1 = HH,\; s_2 = HT,\; s_3 = TH,\; s_4 = TT"></span>. Line 3 evaluates each one. Line 4 drops the duplicate (sets don't repeat elements) and sorts.</p>
 
-          <p>Since we can list these values (there are exactly three), <span class="math-inline" data-math="X"></span> is a <strong>discrete</strong> random variable.</p>
-
           <div class="key-insight">
             <span class="key-tag">Don't confuse</span>
             <strong>Sample space</strong> = original outcomes (HH, HT, …).<br>
             <strong>Range</strong> = the numbers <span class="math-inline" data-math="X"></span> assigns to them (0, 1, 2).
           </div>
 
-          <h3>A second example: two dice</h3>
+          <div class="exam-def">
+            <span class="exam-def-tag">Exam-ready definition</span>
+            <p>A discrete random variable is a function that assigns a real number to each outcome of a random experiment, and its range consists of a finite or countably infinite set of distinct values.</p>
+            <div class="math-block" data-math="X : S \to \mathbb{R}"></div>
+          </div>
+        </div>
+      </section>
 
-          <p>Throw a pair of dice and note the sum. Now each outcome is a <em>pair</em> <span class="math-inline" data-math="(i, j)"></span> - first die, second die:</p>
+      <!-- ══ Stop 3b: Combining random variables ══ -->
+
+      <section class="stop" id="combining">
+        <div class="stop-marker"></div>
+        <div class="stop-content">
+          <span class="stop-label">Building on it</span>
+          <h2>Combining random variables</h2>
+
+          <p>Throw a pair of dice and note the sum. Each outcome is now a <em>pair</em> <span class="math-inline" data-math="(i, j)"></span>, first die then second:</p>
           <div class="math-block" data-math="S = \{(1,1),\; (1,2),\; \ldots,\; (1,6),\; (2,1),\; \ldots,\; (6,6)\} \quad (36 \text{ points})"></div>
 
           <p>Define <span class="math-inline" data-math="X"></span> = sum of the two faces:</p>
@@ -193,40 +198,29 @@
 
           <div class="math-block" data-math="R_X = \{2, 3, 4, \ldots, 12\}"></div>
 
-          <p>Two things are different from the coin example:</p>
+          <p>Two things are different from the coin:</p>
           <ul class="why-list">
-            <li>For the coin, each outcome was one symbol like HH. For the dice, each outcome is a <em>pair</em> like (3, 4). <span class="math-inline" data-math="X"></span> can take a pair as its input - that's allowed.</li>
-            <li>For the coin, we needed <span class="math-inline" data-math="X"></span> to turn words into numbers. Here the outcomes are already numbers, so why use <span class="math-inline" data-math="X"></span> at all? Because we have <em>two</em> numbers and want <em>one</em>. <span class="math-inline" data-math="X"></span> combines them into the sum.</li>
+            <li>The input to <span class="math-inline" data-math="X"></span> is a pair, not a single symbol. That's allowed.</li>
+            <li>The outcomes are already numbers, so why use <span class="math-inline" data-math="X"></span> at all? Because there are <em>two</em> numbers and we want <em>one</em>. <span class="math-inline" data-math="X"></span> combines them.</li>
           </ul>
 
-          <h3>More than one random variable on the same experiment</h3>
-
-          <p>So far every example had exactly one random variable. But nothing stops you from defining several on the same sample space. On the two-dice <span class="math-inline" data-math="S"></span>, define:</p>
+          <p>That second point opens a door. On the same <span class="math-inline" data-math="S"></span>, define two simpler random variables:</p>
 
           <div class="math-block" data-math="X_1((i, j)) = i \quad \text{(first die)} \qquad\qquad X_2((i, j)) = j \quad \text{(second die)}"></div>
 
-          <p>Both are random variables on <span class="math-inline" data-math="S"></span> - each takes an outcome and returns a number. For the outcome (3, 4):</p>
+          <p>Each takes an outcome and returns a number, so each is a random variable on <span class="math-inline" data-math="S"></span>. For the outcome (3, 4): <span class="math-inline" data-math="X_1((3,4)) = 3"></span> and <span class="math-inline" data-math="X_2((3,4)) = 4"></span>.</p>
 
-          <div class="math-block" data-math="X_1((3,4)) = 3, \qquad X_2((3,4)) = 4"></div>
-
-          <p>Now here's the question. <span class="math-inline" data-math="X_1"></span> and <span class="math-inline" data-math="X_2"></span> are <em>functions</em>, not numbers. What would "<span class="math-inline" data-math="X_1 + X_2"></span>" even mean?</p>
+          <p>But <span class="math-inline" data-math="X_1"></span> and <span class="math-inline" data-math="X_2"></span> are <em>functions</em>, not numbers. What does "<span class="math-inline" data-math="X_1 + X_2"></span>" mean?</p>
 
           <div class="key-insight">
             <span class="key-tag">Arithmetic on random variables</span>
             You add two random variables by adding their outputs at each outcome. For any <span class="math-inline" data-math="s \in S"></span>:
             <div class="math-block" data-math="(X_1 + X_2)(s) = X_1(s) + X_2(s)"></div>
-            So <span class="math-inline" data-math="(X_1 + X_2)((3,4)) = 3 + 4 = 7"></span>. Do this for every outcome and you get a new function <span class="math-inline" data-math="S \to \mathbb{R}"></span> - which means <span class="math-inline" data-math="X_1 + X_2"></span> is itself a random variable. It's exactly the "sum of the dice" <span class="math-inline" data-math="X"></span> we defined above.
+            So <span class="math-inline" data-math="(X_1 + X_2)((3,4)) = 3 + 4 = 7"></span>. Do this for every outcome and you get a new function <span class="math-inline" data-math="S \to \mathbb{R}"></span>, which means <span class="math-inline" data-math="X_1 + X_2"></span> is itself a random variable. It's exactly the "sum of the dice" <span class="math-inline" data-math="X"></span> defined above.
             <br><br>
             The same works for adding a constant and scaling by a constant:
             <div class="math-block" data-math="(X + K)(s) = X(s) + K, \qquad (KX)(s) = K \cdot X(s)"></div>
-            <strong>Why this matters later:</strong> expected value has the rule <span class="math-inline" data-math="E[X + Y] = E[X] + E[Y]"></span>. That rule is only meaningful because <span class="math-inline" data-math="X + Y"></span> is guaranteed to be a random variable - which is what this box establishes.
-          </div>
-
-          <!-- Exam-ready definition restored -->
-          <div class="exam-def">
-            <span class="exam-def-tag">Exam-ready definition</span>
-            <p>A discrete random variable is a function that assigns a real number to each outcome of a random experiment, and its range consists of a finite or countably infinite set of distinct values.</p>
-            <div class="math-block" data-math="X : S \to \mathbb{R}"></div>
+            <strong>Why this matters later:</strong> expected value has the rule <span class="math-inline" data-math="E[X + Y] = E[X] + E[Y]"></span>. That rule only makes sense because <span class="math-inline" data-math="X + Y"></span> is guaranteed to be a random variable, which is what this box establishes.
           </div>
         </div>
       </section>
@@ -246,30 +240,7 @@
           <span class="stop-label">The next layer</span>
           <h2>Attaching probabilities</h2>
 
-          <p>First, what does a statement like <span class="math-inline" data-math="P(X = 2)"></span> even mean? <span class="math-inline" data-math="X"></span> is a function, not an event. Here's the bridge:</p>
-
-          <div class="math-block" data-math="P(X = a) \;=\; P\{\, s \in S \;|\; X(s) = a \,\}"></div>
-
-          <p>"The probability that <span class="math-inline" data-math="X"></span> equals <span class="math-inline" data-math="a"></span>" is <em>defined as</em> the probability of the set of outcomes that make <span class="math-inline" data-math="X"></span> equal <span class="math-inline" data-math="a"></span>. Every probability statement about <span class="math-inline" data-math="X"></span> is secretly a statement about a subset of <span class="math-inline" data-math="S"></span>. Same pattern for every flavour of inequality:</p>
-
-          <table>
-            <thead><tr><th>Shorthand</th><th>What it actually means</th><th>Two-coin example (<span class="math-inline" data-math="X"></span> = heads)</th></tr></thead>
-            <tbody>
-              <tr><td><span class="math-inline" data-math="P(X = a)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) = a\}"></span></td><td><span class="math-inline" data-math="P(X = 1) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
-              <tr><td><span class="math-inline" data-math="P(X \leq c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) \leq c\}"></span></td><td><span class="math-inline" data-math="P(X \leq 1) = P\{HT, TH, TT\} = \tfrac{3}{4}"></span></td></tr>
-              <tr><td><span class="math-inline" data-math="P(X > c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) > c\}"></span></td><td><span class="math-inline" data-math="P(X > 1) = P\{HH\} = \tfrac{1}{4}"></span></td></tr>
-              <tr><td><span class="math-inline" data-math="P(a < X < b)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, a < X(s) < b\}"></span></td><td><span class="math-inline" data-math="P(0 < X < 2) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
-            </tbody>
-          </table>
-
-          <div class="key-insight">
-            <span class="key-tag">Handy identities</span>
-            Since <span class="math-inline" data-math="X \leq c"></span> and <span class="math-inline" data-math="X > c"></span> split <span class="math-inline" data-math="S"></span> into two halves:
-            <div class="math-block" data-math="P(X \leq c) + P(X > c) = 1 \qquad\Longrightarrow\qquad P(X > c) = 1 - P(X \leq c)"></div>
-            Check it on the table: <span class="math-inline" data-math="\tfrac{3}{4} + \tfrac{1}{4} = 1"></span>. The complement form is the one you'll reach for on exams - compute whichever side is easier, subtract from 1.
-          </div>
-
-          <p>Now back to our two-coin-toss example. <span class="math-inline" data-math="X = \{0, 1, 2\}"></span> -but how probable is each?</p>
+          <p>Back to the two-coin toss. <span class="math-inline" data-math="X"></span> takes the values 0, 1, 2. How probable is each?</p>
 
           <p>There are 4 equally likely outcomes. Count how many give each value of <span class="math-inline" data-math="X"></span>:</p>
 
@@ -297,7 +268,30 @@
             </div>
           </div>
 
-          <p>This -the values plus their probabilities -is the <strong>discrete probability distribution</strong>. It answers two questions at once:</p>
+          <p>That's the intuition. Now the notation. <span class="math-inline" data-math="X"></span> is a function, not an event, so what does <span class="math-inline" data-math="P(X = 1)"></span> actually mean? Here's the bridge:</p>
+
+          <div class="math-block" data-math="P(X = a) \;=\; P\{\, s \in S \;|\; X(s) = a \,\}"></div>
+
+          <p>"The probability that <span class="math-inline" data-math="X"></span> equals <span class="math-inline" data-math="a"></span>" is <em>defined as</em> the probability of the set of outcomes that make <span class="math-inline" data-math="X"></span> equal <span class="math-inline" data-math="a"></span>. That's what the bar chart was doing: <span class="math-inline" data-math="P(X = 1)"></span> is the probability of <span class="math-inline" data-math="\{HT, TH\}"></span>. Every probability statement about <span class="math-inline" data-math="X"></span> is really a statement about a subset of <span class="math-inline" data-math="S"></span>, and the same pattern holds for every kind of inequality:</p>
+
+          <table>
+            <thead><tr><th>Shorthand</th><th>What it actually means</th><th>Two-coin example (<span class="math-inline" data-math="X"></span> = heads)</th></tr></thead>
+            <tbody>
+              <tr><td><span class="math-inline" data-math="P(X = a)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) = a\}"></span></td><td><span class="math-inline" data-math="P(X = 1) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(X \leq c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) \leq c\}"></span></td><td><span class="math-inline" data-math="P(X \leq 1) = P\{HT, TH, TT\} = \tfrac{3}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(X > c)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, X(s) > c\}"></span></td><td><span class="math-inline" data-math="P(X > 1) = P\{HH\} = \tfrac{1}{4}"></span></td></tr>
+              <tr><td><span class="math-inline" data-math="P(a < X < b)"></span></td><td><span class="math-inline" data-math="P\{s \,|\, a < X(s) < b\}"></span></td><td><span class="math-inline" data-math="P(0 < X < 2) = P\{HT, TH\} = \tfrac{2}{4}"></span></td></tr>
+            </tbody>
+          </table>
+
+          <div class="key-insight">
+            <span class="key-tag">Complement rule</span>
+            <span class="math-inline" data-math="X \leq c"></span> and <span class="math-inline" data-math="X > c"></span> split <span class="math-inline" data-math="S"></span> into two halves, so:
+            <div class="math-block" data-math="P(X \leq c) + P(X > c) = 1 \qquad\Longrightarrow\qquad P(X > c) = 1 - P(X \leq c)"></div>
+            Check it on the table: <span class="math-inline" data-math="\tfrac{3}{4} + \tfrac{1}{4} = 1"></span>. On exams, compute whichever side is easier and subtract from 1.
+          </div>
+
+          <p>The values together with their probabilities form the <strong>discrete probability distribution</strong>. It answers two questions at once:</p>
           <ol>
             <li>What values can <span class="math-inline" data-math="X"></span> take?</li>
             <li>How likely is each one?</li>
