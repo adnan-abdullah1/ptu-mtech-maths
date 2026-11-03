@@ -137,9 +137,30 @@
             <div class="map-pair"><span class="map-from">TT</span><span class="map-arrow">→</span><span class="map-to">0</span></div>
           </div>
 
-          <p>This is exactly what the formal definition says:</p>
-          <div class="math-block" data-math="X : S \to \mathbb{R}"></div>
-          <p class="caption"><span class="math-inline" data-math="X"></span> is a function from the sample space <span class="math-inline" data-math="S"></span> to the real numbers <span class="math-inline" data-math="\mathbb{R}"></span>.</p>
+          <p>The textbook writes this as a function:</p>
+          <div class="math-block" data-math="X : S \to \mathbb{R}, \qquad X(s) = \text{number of heads in } s"></div>
+
+          <p>This is ordinary function notation - the same kind you've used since school. Compare it with something familiar:</p>
+
+          <table>
+            <thead><tr><th>Piece</th><th>Ordinary function</th><th>Random variable</th></tr></thead>
+            <tbody>
+              <tr><td>Name</td><td><span class="math-inline" data-math="f"></span></td><td><span class="math-inline" data-math="X"></span></td></tr>
+              <tr><td>Input set (domain)</td><td><span class="math-inline" data-math="\mathbb{R}"></span></td><td><span class="math-inline" data-math="S"></span> (sample space)</td></tr>
+              <tr><td>Output set (codomain)</td><td><span class="math-inline" data-math="\mathbb{R}"></span></td><td><span class="math-inline" data-math="\mathbb{R}"></span></td></tr>
+              <tr><td>Rule</td><td><span class="math-inline" data-math="f(x) = x^2"></span></td><td><span class="math-inline" data-math="X(s) = \text{number of heads}"></span></td></tr>
+              <tr><td>One evaluation</td><td><span class="math-inline" data-math="f(3) = 9"></span></td><td><span class="math-inline" data-math="X(HH) = 2"></span></td></tr>
+            </tbody>
+          </table>
+
+          <p>Read <span class="math-inline" data-math="X : S \to \mathbb{R}"></span> left to right: "<span class="math-inline" data-math="X"></span> is a function that takes an outcome from <span class="math-inline" data-math="S"></span> and gives back a real number." And <span class="math-inline" data-math="X(s)"></span> is the number you get when you feed in one specific outcome <span class="math-inline" data-math="s"></span>.</p>
+
+          <p>The only new thing is the input. For <span class="math-inline" data-math="f(x) = x^2"></span>, the input is a number. For a random variable, the input is an <em>outcome</em> - which might be a word like HH, not a number at all. <span class="math-inline" data-math="X"></span> is the converter that turns it into one.</p>
+
+          <div class="key-insight">
+            <span class="key-tag">Where the randomness lives</span>
+            With <span class="math-inline" data-math="f(x) = x^2"></span>, <em>you</em> choose the input. With a random variable, the <em>experiment</em> chooses it. The coins land on HH, and then <span class="math-inline" data-math="X(HH) = 2"></span> is what you observe. The function <span class="math-inline" data-math="X"></span> itself is fixed and deterministic - the randomness is entirely in which <span class="math-inline" data-math="s"></span> the experiment hands you.
+          </div>
 
           <p>The <strong>range</strong> of <span class="math-inline" data-math="X"></span> -the set of numbers it actually produces -is:</p>
           <div class="math-block" data-math="R_X = \{X(s) : s \in S\} = \{0, 1, 2\}"></div>
