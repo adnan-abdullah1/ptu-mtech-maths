@@ -191,13 +191,33 @@
 
           <div class="math-block" data-math="R_X = \{2, 3, 4, \ldots, 12\}"></div>
 
-          <p>Two things this example shows that the coin didn't. The input to <span class="math-inline" data-math="X"></span> can be a tuple, not a single symbol. And the outcomes were already numbers - <span class="math-inline" data-math="X"></span> still earns its keep by <em>combining</em> them into the one number we care about.</p>
+          <p>Two things are different from the coin example:</p>
+          <ul class="why-list">
+            <li>For the coin, each outcome was one symbol like HH. For the dice, each outcome is a <em>pair</em> like (3, 4). <span class="math-inline" data-math="X"></span> can take a pair as its input - that's allowed.</li>
+            <li>For the coin, we needed <span class="math-inline" data-math="X"></span> to turn words into numbers. Here the outcomes are already numbers, so why use <span class="math-inline" data-math="X"></span> at all? Because we have <em>two</em> numbers and want <em>one</em>. <span class="math-inline" data-math="X"></span> combines them into the sum.</li>
+          </ul>
+
+          <h3>More than one random variable on the same experiment</h3>
+
+          <p>So far every example had exactly one random variable. But nothing stops you from defining several on the same sample space. On the two-dice <span class="math-inline" data-math="S"></span>, define:</p>
+
+          <div class="math-block" data-math="X_1((i, j)) = i \quad \text{(first die)} \qquad\qquad X_2((i, j)) = j \quad \text{(second die)}"></div>
+
+          <p>Both are random variables on <span class="math-inline" data-math="S"></span> - each takes an outcome and returns a number. For the outcome (3, 4):</p>
+
+          <div class="math-block" data-math="X_1((3,4)) = 3, \qquad X_2((3,4)) = 4"></div>
+
+          <p>Now here's the question. <span class="math-inline" data-math="X_1"></span> and <span class="math-inline" data-math="X_2"></span> are <em>functions</em>, not numbers. What would "<span class="math-inline" data-math="X_1 + X_2"></span>" even mean?</p>
 
           <div class="key-insight">
-            <span class="key-tag">Building new random variables</span>
-            If <span class="math-inline" data-math="X"></span> and <span class="math-inline" data-math="Y"></span> are random variables on the same <span class="math-inline" data-math="S"></span>, then so are <span class="math-inline" data-math="X + Y"></span>, <span class="math-inline" data-math="X + K"></span>, and <span class="math-inline" data-math="KX"></span> (for any constant <span class="math-inline" data-math="K"></span>). They're defined outcome by outcome:
-            <div class="math-block" data-math="(X + Y)(s) = X(s) + Y(s), \qquad (X + K)(s) = X(s) + K, \qquad (KX)(s) = K \cdot X(s)"></div>
-            The two-dice sum is exactly this: if <span class="math-inline" data-math="X_1"></span> = first die and <span class="math-inline" data-math="X_2"></span> = second die, then "sum" is <span class="math-inline" data-math="X_1 + X_2"></span>. You'll use this constantly when expectation and variance arrive.
+            <span class="key-tag">Arithmetic on random variables</span>
+            You add two random variables by adding their outputs at each outcome. For any <span class="math-inline" data-math="s \in S"></span>:
+            <div class="math-block" data-math="(X_1 + X_2)(s) = X_1(s) + X_2(s)"></div>
+            So <span class="math-inline" data-math="(X_1 + X_2)((3,4)) = 3 + 4 = 7"></span>. Do this for every outcome and you get a new function <span class="math-inline" data-math="S \to \mathbb{R}"></span> - which means <span class="math-inline" data-math="X_1 + X_2"></span> is itself a random variable. It's exactly the "sum of the dice" <span class="math-inline" data-math="X"></span> we defined above.
+            <br><br>
+            The same works for adding a constant and scaling by a constant:
+            <div class="math-block" data-math="(X + K)(s) = X(s) + K, \qquad (KX)(s) = K \cdot X(s)"></div>
+            <strong>Why this matters later:</strong> expected value has the rule <span class="math-inline" data-math="E[X + Y] = E[X] + E[Y]"></span>. That rule is only meaningful because <span class="math-inline" data-math="X + Y"></span> is guaranteed to be a random variable - which is what this box establishes.
           </div>
 
           <!-- Exam-ready definition restored -->
