@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-next-page="unit2.html" data-next-title="Unit 2: Continuous RV &amp; PDF">
 
   <!-- ── Sidebar ── -->
   <nav class="sidebar" id="sidebar">
@@ -341,76 +341,165 @@
         </div>
       </section>
 
-      <!-- ══ Stop 5: PMF ══ -->
+      <!-- ══ Stop 5: Probability function (PMF) ══ -->
 
       <section class="stop" id="pmf">
         <div class="stop-marker"></div>
         <div class="stop-content">
-          <span class="stop-label">The notation</span>
-          <h2>Probability Mass Function (PMF)</h2>
+          <span class="stop-label">The formula</span>
+          <h2>The probability function (PMF)</h2>
 
-          <p>The bar charts in the last stop can each be described by a mathematical function: feed in a value of <span class="math-inline" data-math="X"></span>, get back its probability. The book calls this the <strong>probability function</strong> or <strong>statistical distribution</strong>; the standard name for the discrete case is <strong>probability mass function</strong>. All three mean this:</p>
-          <div class="math-block" data-math="P(X = x_k) = f(x_k)"></div>
+          <p>The bar charts above can be described by a formula: feed in a value of <span class="math-inline" data-math="X"></span>, get back its probability. That formula is the <strong>probability function</strong>. Before the maths, let's sort out the names, because the book mixes them.</p>
 
-          <p>This looks abstract, but it's saying something simple:</p>
-
-          <ul class="why-list">
-            <li><span class="math-inline" data-math="X"></span> -the random variable.</li>
-            <li><span class="math-inline" data-math="x_k"></span> -a specific value it can take.</li>
-            <li><span class="math-inline" data-math="f(x_k)"></span> -"give me the probability of that value."</li>
-          </ul>
-
-          <p>For our example, the full PMF is:</p>
-
-          <div class="math-block" data-math="f(x) = \begin{cases} 1/4 & \text{if } x = 0 \\ 1/2 & \text{if } x = 1 \\ 1/4 & \text{if } x = 2 \\ 0 & \text{otherwise} \end{cases}"></div>
-
-          <!-- Expanded zero-outside-range explanation -->
-          <p>That last line -the "otherwise" -is important. What happens if someone asks <span class="math-inline" data-math="P(X = 5)"></span>?</p>
-
-          <div class="math-block" data-math="f(5) = 0, \quad f(10) = 0, \quad f(-3) = 0"></div>
-
-          <p>All zero. Getting 5 heads, 10 heads, or −3 heads in two coin tosses is impossible. The PMF assigns <strong>zero probability to every value outside the range</strong> of <span class="math-inline" data-math="X"></span>.</p>
+          <div class="ladder">
+            <div class="ladder-step">
+              <span class="ladder-tag">The idea</span>
+              <strong>Probability distribution</strong>
+              <p>How the total probability of 1 is spread over the values of <span class="math-inline" data-math="X"></span>. You can show it as a table, a chart, or a formula.</p>
+            </div>
+            <div class="ladder-step ladder-indent">
+              <span class="ladder-tag">The formula</span>
+              <strong>Probability function</strong>
+              <p>The distribution written as a function, <span class="math-inline" data-math="f(x) = P(X = x)"></span>. Same information as the chart, in a form you can calculate with.</p>
+            </div>
+            <div class="ladder-split ladder-indent-2">
+              <div class="ladder-step">
+                <span class="ladder-tag">Discrete X</span>
+                <strong>PMF</strong>
+                <p>Probability <em>mass</em> function. Probabilities sit on individual values and add up to 1. This page.</p>
+              </div>
+              <div class="ladder-step ladder-muted">
+                <span class="ladder-tag">Continuous X</span>
+                <strong>PDF</strong>
+                <p>Probability <em>density</em> function. Probability comes from area under a curve. Unit 2.</p>
+              </div>
+            </div>
+          </div>
 
           <div class="key-insight">
-            <span class="key-tag">Remember</span>
-            The probability function only gives non-zero values for <span class="math-inline" data-math="x \in R_X"></span> (the range). For everything else, <span class="math-inline" data-math="f(x) = 0"></span>. This is a common exam trap -always check whether the asked value is even in the range.
+            <span class="key-tag">Same thing, different names</span>
+            For a discrete random variable, all of these mean the same function: <strong>probability function</strong>, <strong>statistical distribution</strong>, <strong>probability mass function (PMF)</strong>. Your book (section 6.4.1) also calls it the "probability density function of a discrete random variable". That's loose wording. Standard usage keeps "density" for the continuous case, so write <strong>PMF</strong> for discrete.<br><br>
+            The book writes the function as <span class="math-inline" data-math="p(x)"></span>. These notes write <span class="math-inline" data-math="f(x)"></span>. Same function, different letter.
+          </div>
+
+          <h3>The probability function is a function too</h3>
+
+          <p>You already know <span class="math-inline" data-math="X"></span> is a function. The probability function is a <em>second</em> function, built on top of it:</p>
+
+          <div class="math-block" data-math="f : \mathbb{R} \to [0, 1], \qquad f(x) = P(X = x)"></div>
+
+          <ul class="why-list">
+            <li><strong>Input:</strong> any real number <span class="math-inline" data-math="x"></span>. You're allowed to ask for <span class="math-inline" data-math="f(7.3)"></span> even though <span class="math-inline" data-math="X"></span> can never be 7.3.</li>
+            <li><strong>Output:</strong> a probability, so a number from 0 to 1.</li>
+            <li><strong>Rule:</strong> the probability that <span class="math-inline" data-math="X"></span> lands on the value <span class="math-inline" data-math="x"></span>.</li>
+          </ul>
+
+          <table>
+            <thead><tr><th></th><th>Random variable <span class="math-inline" data-math="X"></span></th><th>Probability function <span class="math-inline" data-math="f"></span></th></tr></thead>
+            <tbody>
+              <tr><td>Input</td><td>an outcome, like HT</td><td>a number, like 1</td></tr>
+              <tr><td>Output</td><td>a number</td><td>a probability</td></tr>
+              <tr><td>Example</td><td><span class="math-inline" data-math="X(HT) = 1"></span></td><td><span class="math-inline" data-math="f(1) = \tfrac{1}{2}"></span></td></tr>
+            </tbody>
+          </table>
+
+          <p>They chain together. The experiment hands you an outcome, <span class="math-inline" data-math="X"></span> turns it into a number, and <span class="math-inline" data-math="f"></span> tells you how likely that number was:</p>
+
+          <div class="math-block" data-math="HT \;\xrightarrow{\;X\;}\; 1 \;\xrightarrow{\;f\;}\; \tfrac{1}{2}"></div>
+
+          <h3>What P(X = x) really means</h3>
+
+          <p>Written out in full, the right-hand side is a set of outcomes:</p>
+
+          <div class="math-block" data-math="f(x) = P\big(\{\, s \in S \;|\; X(s) = x \,\}\big)"></div>
+
+          <p>Collect every outcome whose <span class="math-inline" data-math="X"></span>-value equals <span class="math-inline" data-math="x"></span>. That collection is an event, and <span class="math-inline" data-math="f(x)"></span> is its probability. Two coins, <span class="math-inline" data-math="X"></span> = number of heads:</p>
+
+          <div class="math-block" data-math="\begin{aligned} f(1) &= P(\{HT,\, TH\}) = \tfrac{2}{4} = \tfrac{1}{2} \\[4pt] f(5) &= P(\{\,\}) = 0 \qquad \text{(no outcome has 5 heads)} \end{aligned}"></div>
+
+          <p>That second line explains why <span class="math-inline" data-math="f(x) = 0"></span> outside the range. It isn't a separate rule to memorise. For an impossible value, the set of outcomes is empty, and the empty set has probability 0.</p>
+
+          <div class="key-insight">
+            <span class="key-tag">Exam trap</span>
+            Before calculating <span class="math-inline" data-math="P(X = x)"></span>, check whether <span class="math-inline" data-math="x"></span> is in the range at all. If it isn't, the answer is 0.
+          </div>
+
+          <h3>Three ways to write the same function</h3>
+
+          <p><strong>As a table:</strong></p>
+          <table class="compact">
+            <thead><tr><th><span class="math-inline" data-math="x"></span></th><th><span class="math-inline" data-math="f(x)"></span></th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td><span class="math-inline" data-math="1/4"></span></td></tr>
+              <tr><td>1</td><td><span class="math-inline" data-math="1/2"></span></td></tr>
+              <tr><td>2</td><td><span class="math-inline" data-math="1/4"></span></td></tr>
+            </tbody>
+          </table>
+
+          <p><strong>As a piecewise formula:</strong></p>
+          <div class="math-block" data-math="f(x) = \begin{cases} 1/4 & \text{if } x = 0 \\ 1/2 & \text{if } x = 1 \\ 1/4 & \text{if } x = 2 \\ 0 & \text{otherwise} \end{cases}"></div>
+
+          <p><strong>As a single formula</strong>, when one exists:</p>
+          <div class="math-block" data-math="f(x) = \frac{\binom{2}{x}}{4}, \qquad x = 0, 1, 2"></div>
+          <p class="caption">Check: <span class="math-inline" data-math="\binom{2}{0} = 1,\; \binom{2}{1} = 2,\; \binom{2}{2} = 1"></span>, giving 1/4, 2/4, 1/4. This pattern comes back with the Binomial distribution.</p>
+
+          <p>Exams usually expect the table or the piecewise form. The "otherwise, 0" line is part of the function, so include it.</p>
+
+          <div class="exam-def">
+            <span class="exam-def-tag">Exam-ready definition</span>
+            <p>If for a discrete random variable <span class="math-inline" data-math="X"></span> the real-valued function <span class="math-inline" data-math="p(x)"></span> satisfies <span class="math-inline" data-math="P(X = x) = p(x)"></span>, then <span class="math-inline" data-math="p(x)"></span> is called the probability function (probability mass function) of <span class="math-inline" data-math="X"></span>. It gives the probability of each value of <span class="math-inline" data-math="X"></span>.</p>
           </div>
         </div>
       </section>
 
-      <!-- ══ Stop 6: The two rules ══ -->
+      <!-- ══ Stop 6: Properties of a probability function ══ -->
 
       <section class="stop" id="conditions">
         <div class="stop-marker"></div>
         <div class="stop-content">
           <span class="stop-label">The rules</span>
-          <h2>When is a function a valid PMF?</h2>
+          <h2>Properties of a probability function</h2>
 
-          <p>Not every function qualifies. Two conditions must hold:</p>
+          <p>Not every function qualifies as a probability function. It must satisfy two properties:</p>
 
           <div class="rules-grid">
             <div class="rule-card">
               <span class="rule-num">1</span>
               <div>
                 <strong>Non-negativity</strong>
-                <div class="math-block" data-math="f(x) \geq 0"></div>
-                <p>Probabilities can't be negative.</p>
+                <div class="math-block" data-math="f(x) \geq 0 \text{ for all } x"></div>
+                <p>No probability is negative.</p>
               </div>
             </div>
             <div class="rule-card">
               <span class="rule-num">2</span>
               <div>
-                <strong>Normalization</strong>
+                <strong>Sums to 1</strong>
                 <div class="math-block" data-math="\displaystyle\sum_x f(x) = 1"></div>
-                <p>Total probability must equal 1 -something has to happen.</p>
+                <p>Add over every value in the range.</p>
               </div>
             </div>
           </div>
 
-          <p>Let's verify our coin example:</p>
-          <div class="math-block" data-math="\underbrace{\frac{1}{4}}_{\geq\,0} + \underbrace{\frac{1}{2}}_{\geq\,0} + \underbrace{\frac{1}{4}}_{\geq\,0} = 1 \quad\checkmark"></div>
+          <h3>Why these two</h3>
 
-          <p>Now try this one:</p>
+          <p><strong>Property 1.</strong> Each <span class="math-inline" data-math="f(x)"></span> is the probability of an event, and probabilities are never negative. That's all there is to it.</p>
+
+          <p><strong>Property 2.</strong> The events <span class="math-inline" data-math="\{X = 0\}"></span>, <span class="math-inline" data-math="\{X = 1\}"></span>, <span class="math-inline" data-math="\{X = 2\}"></span> don't overlap (one toss can't give both 0 and 1 heads), and together they cover all of <span class="math-inline" data-math="S"></span> (every outcome has <em>some</em> number of heads). Non-overlapping events that cover everything have probabilities that add to <span class="math-inline" data-math="P(S) = 1"></span>.</p>
+
+          <p>On the bar chart: property 1 says no bar dips below the axis, and property 2 says the bar heights add to 1.</p>
+
+          <div class="key-insight">
+            <span class="key-tag">The book lists three</span>
+            Your book's property 3, "<span class="math-inline" data-math="p(x)"></span> cannot be negative for any value of <span class="math-inline" data-math="x"></span>", says the same thing as property 1. The real list is two properties. If you want a genuine third, use the one from the last stop: <span class="math-inline" data-math="f(x) = 0"></span> outside the range.
+          </div>
+
+          <h3>Using the properties</h3>
+
+          <p><strong>1. Checking a function.</strong> Our coin example passes both:</p>
+          <div class="math-block" data-math="\underbrace{\tfrac{1}{4}}_{\geq\,0} + \underbrace{\tfrac{1}{2}}_{\geq\,0} + \underbrace{\tfrac{1}{4}}_{\geq\,0} = 1 \quad\checkmark"></div>
+
+          <p>This one doesn't:</p>
           <table class="compact">
             <thead><tr><th><span class="math-inline" data-math="x"></span></th><th><span class="math-inline" data-math="f(x)"></span></th></tr></thead>
             <tbody>
@@ -419,7 +508,31 @@
               <tr><td>2</td><td>0.4</td></tr>
             </tbody>
           </table>
-          <p><span class="math-inline" data-math="0.2 + 0.3 + 0.4 = 0.9 \neq 1"></span>. Fails condition 2. <strong>Not a valid PMF.</strong></p>
+          <p>All values are non-negative, but <span class="math-inline" data-math="0.2 + 0.3 + 0.4 = 0.9 \neq 1"></span>. Fails property 2, so it is <strong>not</strong> a probability function.</p>
+
+          <p><strong>2. Finding an unknown.</strong> Suppose:</p>
+          <table class="compact">
+            <thead><tr><th><span class="math-inline" data-math="x"></span></th><th><span class="math-inline" data-math="f(x)"></span></th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td><span class="math-inline" data-math="k"></span></td></tr>
+              <tr><td>1</td><td><span class="math-inline" data-math="2k"></span></td></tr>
+              <tr><td>2</td><td><span class="math-inline" data-math="3k"></span></td></tr>
+              <tr><td>3</td><td><span class="math-inline" data-math="4k"></span></td></tr>
+            </tbody>
+          </table>
+          <p>Property 2 forces the sum to be 1:</p>
+          <div class="math-block" data-math="k + 2k + 3k + 4k = 10k = 1 \quad\Longrightarrow\quad k = \tfrac{1}{10}"></div>
+          <p>Then check property 1: every value is positive. ✓</p>
+
+          <p><strong>3. Computing a probability.</strong> With the same table, find <span class="math-inline" data-math="P(X \geq 2)"></span>. Add <span class="math-inline" data-math="f(x)"></span> over the values the inequality picks out:</p>
+          <div class="math-block" data-math="P(X \geq 2) = f(2) + f(3) = \tfrac{3}{10} + \tfrac{4}{10} = \tfrac{7}{10}"></div>
+          <p>Or use the complement rule from earlier:</p>
+          <div class="math-block" data-math="P(X \geq 2) = 1 - P(X \leq 1) = 1 - \left(\tfrac{1}{10} + \tfrac{2}{10}\right) = \tfrac{7}{10}"></div>
+
+          <div class="exam-def">
+            <span class="exam-def-tag">Exam-ready statement</span>
+            <p>If <span class="math-inline" data-math="p(x)"></span> is the probability function of a discrete random variable <span class="math-inline" data-math="X"></span>, then (1) <span class="math-inline" data-math="p(x) \geq 0"></span> for all <span class="math-inline" data-math="x"></span>, and (2) <span class="math-inline" data-math="\sum_x p(x) = 1"></span>, where the sum is taken over all values of <span class="math-inline" data-math="x"></span>.</p>
+          </div>
         </div>
       </section>
 

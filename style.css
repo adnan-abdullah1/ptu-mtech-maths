@@ -368,6 +368,59 @@ ol li { padding: 2px 0; }
   letter-spacing: .06em; color: var(--accent); display: block; margin-bottom: 6px;
 }
 
+/* ── Name ladder (distribution → function → PMF/PDF) ── */
+.ladder { margin: 20px 0; display: flex; flex-direction: column; gap: 8px; }
+.ladder-step {
+  background: var(--surface); border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius); padding: 12px 16px;
+}
+.ladder-step strong { display: block; color: var(--white); font-size: 15px; }
+.ladder-step p { font-size: 13px; color: var(--text-dim); margin: 4px 0 0; }
+.ladder-tag {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--accent);
+}
+.ladder-indent { margin-left: 24px; }
+.ladder-indent-2 { margin-left: 48px; }
+.ladder-split { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ladder-muted { opacity: .7; border-left-color: var(--border-light); }
+
+/* ── Stop pager ── */
+.stop { scroll-margin-top: 8px; }
+.stop-pager {
+  display: flex; align-items: stretch; gap: 10px;
+  margin-top: 36px; padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.pager-link {
+  flex: 0 1 46%; min-width: 0;
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 10px 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); text-decoration: none;
+  transition: border-color .15s;
+}
+.pager-link:hover { border-color: var(--accent); }
+.pager-next { text-align: right; margin-left: auto; }
+.pager-label { font-size: 11px; font-weight: 600; color: var(--accent); }
+.pager-title {
+  font-size: 13px; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pager-count {
+  align-self: center; flex-shrink: 0;
+  font-size: 11px; color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Reading progress bar ── */
+.read-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0;
+  background: var(--accent); z-index: 300;
+  pointer-events: none;
+}
+
 /* ── Exam-ready definition ── */
 .exam-def {
   background: var(--surface-2);
@@ -464,6 +517,10 @@ ol li { padding: 2px 0; }
   .rules-grid { grid-template-columns: 1fr; }
   .ref-grid { grid-template-columns: 1fr; }
   .comparison-row { grid-template-columns: 1fr; }
+  .ladder-indent { margin-left: 12px; }
+  .ladder-indent-2 { margin-left: 24px; }
+  .ladder-split { grid-template-columns: 1fr; }
+  .pager-count { display: none; }
   .dist-visual { gap: 20px; }
   .dist-bar { width: 44px; }
   .mapping-visual { gap: 8px; }
