@@ -68,7 +68,7 @@
           <p>Take the dice. Its outcomes are:</p>
           <div class="math-block" data-math="S = \{1, 2, 3, 4, 5, 6\}"></div>
 
-          <p>Define <span class="math-inline" data-math="X"></span> = "the number that appears." Then <span class="math-inline" data-math="X"></span> can be 1, 2, 3, 4, 5, or 6, and which one it is gets decided by the throw. That's a <strong>random variable</strong>: a rule that turns experiment outcomes into numbers. The book also calls it a <strong>stochastic variable</strong> or <strong>chance variable</strong>; all three names mean the same thing.</p>
+          <p>Define <span class="math-inline" data-math="X"></span> = "the number that appears." Then <span class="math-inline" data-math="X"></span> can be 1, 2, 3, 4, 5, or 6, and which one it is gets decided by the throw. That's a <strong>random variable</strong>: a rule that turns experiment outcomes into numbers. It's also called a <strong>stochastic variable</strong> or <strong>chance variable</strong>; all three names mean the same thing.</p>
 
           <div class="key-insight">
             <span class="key-tag">Key insight</span>
@@ -107,7 +107,7 @@
 
           <div class="key-insight">
             <span class="key-tag">Finite or countably infinite</span>
-            Your book says a discrete variable takes a <strong>finite</strong> number of values. But printing mistakes and phone calls have no fixed upper limit, so they go 0, 1, 2, … forever. That's still discrete, because you can list the values. The complete definition is <strong>finite or countably infinite</strong>. If your exam follows the book, write "finite"; just know the full version includes the infinite case. Continuous is different: the values fill an entire interval with no gaps.
+            A discrete variable takes a <strong>finite or countably infinite</strong> number of values. Printing mistakes and phone calls have no fixed upper limit, so they go 0, 1, 2, … forever. That's still discrete, because you can list the values. Continuous is different: the values fill an entire interval with no gaps.
           </div>
         </div>
       </section>
@@ -132,7 +132,7 @@
             <div class="map-pair"><span class="map-from">TT</span><span class="map-arrow">→</span><span class="map-to">0</span></div>
           </div>
 
-          <p>The textbook writes this as a function:</p>
+          <p>Written as a function:</p>
           <div class="math-block" data-math="X : S \to \mathbb{R}, \qquad X(s) = \text{number of heads in } s"></div>
 
           <p>This is ordinary function notation - the same kind you've used since school. Compare it with something familiar:</p>
@@ -159,7 +159,7 @@
 
           <p>The <strong>range</strong> of <span class="math-inline" data-math="X"></span> -the set of numbers it actually produces -is:</p>
           <div class="math-block" data-math="\begin{aligned} R_X &= \{X(s) : s \in S\} \\ &= \{X(s_1),\; X(s_2),\; X(s_3),\; X(s_4)\} \\ &= \{2,\; 1,\; 1,\; 0\} \\ &= \{0, 1, 2\} \end{aligned}"></div>
-          <p class="caption">Line 1 says "collect X(s) for every s in S." Line 2 lists them out using the textbook's labels <span class="math-inline" data-math="s_1 = HH,\; s_2 = HT,\; s_3 = TH,\; s_4 = TT"></span>. Line 3 evaluates each one. Line 4 drops the duplicate (sets don't repeat elements) and sorts.</p>
+          <p class="caption">Line 1 says "collect X(s) for every s in S." Line 2 lists them out using the labels <span class="math-inline" data-math="s_1 = HH,\; s_2 = HT,\; s_3 = TH,\; s_4 = TT"></span>. Line 3 evaluates each one. Line 4 drops the duplicate (sets don't repeat elements) and sorts.</p>
 
           <div class="key-insight">
             <span class="key-tag">Don't confuse</span>
@@ -301,7 +301,7 @@
 
           <div class="key-insight">
             <span class="key-tag">Why it's called a "distribution"</span>
-            These diagrams show how one unit of probability is <em>distributed</em> across the possible values of <span class="math-inline" data-math="X"></span>. That's the whole meaning of the word. The book calls them graphs of probability distributions.
+            These diagrams show how one unit of probability is <em>distributed</em> across the possible values of <span class="math-inline" data-math="X"></span>. That's the whole meaning of the word, and why these are called graphs of probability distributions.
           </div>
 
           <p>So a <strong>discrete probability distribution</strong> is the pairing of each value of <span class="math-inline" data-math="X"></span> with its probability. It answers two questions at once:</p>
@@ -326,7 +326,7 @@
           <span class="stop-label">The formula</span>
           <h2>Probability function (PMF)</h2>
 
-          <p>The bar charts on the previous stop can be described by a formula: feed in a value of <span class="math-inline" data-math="X"></span>, get back its probability. That formula is the <strong>probability function</strong>. Before the maths, let's sort out the names, because the book mixes them.</p>
+          <p>The bar charts on the previous stop can be described by a formula: feed in a value of <span class="math-inline" data-math="X"></span>, get back its probability. That formula is the <strong>probability function</strong>. Before the maths, let's sort out the names, because several are used for the same thing.</p>
 
           <div class="ladder">
             <a class="ladder-step" href="#probability-distribution">
@@ -355,8 +355,8 @@
 
           <div class="key-insight">
             <span class="key-tag">Same thing, different names</span>
-            For a discrete random variable, all of these mean the same function: <strong>probability function</strong>, <strong>statistical distribution</strong>, <strong>probability mass function (PMF)</strong>. Your book (section 6.4.1) also calls it the "probability density function of a discrete random variable". That's loose wording. Standard usage keeps "density" for the continuous case, so write <strong>PMF</strong> for discrete.<br><br>
-            The book writes the function as <span class="math-inline" data-math="p(x)"></span>. These notes write <span class="math-inline" data-math="f(x)"></span>. Same function, different letter.
+            For a discrete random variable, all of these mean the same function: <strong>probability function</strong>, <strong>statistical distribution</strong>, <strong>probability mass function (PMF)</strong>. "Density" is kept for the continuous case, so for discrete write <strong>PMF</strong>.<br><br>
+            The function is written as <span class="math-inline" data-math="p(x)"></span> or <span class="math-inline" data-math="f(x)"></span>. Same function, different letter.
           </div>
 
           <h3>The probability function is a function too</h3>
@@ -478,10 +478,6 @@
 
           <p>On the bar chart: property 1 says no bar dips below the axis, and property 2 says the bar heights add to 1.</p>
 
-          <div class="key-insight">
-            <span class="key-tag">The book lists three</span>
-            Your book's property 3, "<span class="math-inline" data-math="p(x)"></span> cannot be negative for any value of <span class="math-inline" data-math="x"></span>", says the same thing as property 1. The real list is two properties. If you want a genuine third, use the one from the last stop: <span class="math-inline" data-math="f(x) = 0"></span> outside the range.
-          </div>
 
           <h3>Using the properties</h3>
 
